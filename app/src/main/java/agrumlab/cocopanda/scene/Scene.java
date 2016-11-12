@@ -20,7 +20,9 @@ public abstract class Scene {
     }
 
     public abstract void drawScene(Canvas canvas);
+
     public abstract void initializeScene();
+
     public abstract void touch(MotionEvent event);
 
 

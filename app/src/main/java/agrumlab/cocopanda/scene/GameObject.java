@@ -13,7 +13,9 @@ public abstract class GameObject {
     protected float[] coord = {0f, 0f}, vitesse = {0f, 0f};
     protected Bitmap bitmap = null;
     protected Scene scene;
+
     public abstract void draw(Canvas canvas);
+
     public abstract void animation(Iterator iterator);
 
     public GameObject(Scene scene) {
@@ -36,6 +38,7 @@ public abstract class GameObject {
     public Bitmap getBitmap() {
         return bitmap;
     }
+
     public void ifCollision(GameObject gameObject, Iterator iterator) {
 
         boolean collisionX, collisionY;

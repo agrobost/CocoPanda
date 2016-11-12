@@ -51,21 +51,21 @@ public abstract class Level extends Scene {
 
     @Override
     public void touch(MotionEvent event) {
-            switch (event.getActionMasked()) {
-                case MotionEvent.ACTION_DOWN:
-                    panda.actionDown(event);
-                    pauseIcon.actionDown(event);
-                    break;
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                panda.actionDown(event);
+                pauseIcon.actionDown(event);
+                break;
 
-                case MotionEvent.ACTION_MOVE:
-                    panda.actionMove(event);
-                    pauseIcon.actionMove(event);
-                    break;
+            case MotionEvent.ACTION_MOVE:
+                panda.actionMove(event);
+                pauseIcon.actionMove(event);
+                break;
 
-                case MotionEvent.ACTION_UP:
-                    pauseIcon.actionUp(event);
-                    break;
-            }
+            case MotionEvent.ACTION_UP:
+                pauseIcon.actionUp(event);
+                break;
+        }
 
     }
 

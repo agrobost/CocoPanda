@@ -17,10 +17,10 @@ public class PauseMusic extends ButtonIcon {
 
     @Override
     protected void click() {
-        if(PreferenceMemory.gameMusicIsEnable()){
+        if (PreferenceMemory.gameMusicIsEnable()) {
             PreferenceMemory.muteGameMusic();
             SoundManager.muteGameMusic();
-        }else{
+        } else {
             PreferenceMemory.demuteGameMusic();
             SoundManager.demuteGameMusic();
         }

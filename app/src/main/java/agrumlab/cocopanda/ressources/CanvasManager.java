@@ -7,9 +7,6 @@ import android.graphics.Typeface;
 
 import java.util.HashMap;
 
-/**
- * Created by Alexandre on 03/02/2015.
- */
 public class CanvasManager {
 
     private static HashMap<Integer, Paint> paint = null;
@@ -54,11 +51,11 @@ public class CanvasManager {
         return paint.get(ref);
     }
 
-    public static void drawBitmapAdjust(Canvas canvas, Bitmap bitmap, float x, float y, Paint paint1){
+    public static void drawBitmapAdjust(Canvas canvas, Bitmap bitmap, float x, float y, Paint paint1) {
         canvas.drawBitmap(bitmap, x * Screen.adjustWidth, y * Screen.adjustHeight, paint1);
     }
 
-    public static void drawTextAdjust(Canvas canvas, String text, float x, float y, Paint paint1){
+    public static void drawTextAdjust(Canvas canvas, String text, float x, float y, Paint paint1) {
         canvas.drawText(text, x * Screen.adjustWidth, y * Screen.adjustHeight, paint1);
     }
 

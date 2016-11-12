@@ -20,7 +20,7 @@ public class GameApplication extends Application {
         GameApplication.context = getApplicationContext();
     }
 
-    public static Context getAppContext(){
+    public static Context getAppContext() {
         return GameApplication.context;
     }
 }

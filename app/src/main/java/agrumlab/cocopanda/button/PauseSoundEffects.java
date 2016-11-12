@@ -16,9 +16,9 @@ public class PauseSoundEffects extends ButtonIcon {
 
     @Override
     protected void click() {
-        if(PreferenceMemory.soundEffectsIsEnable()){
+        if (PreferenceMemory.soundEffectsIsEnable()) {
             PreferenceMemory.muteSoundEffects();
-        }else{
+        } else {
             PreferenceMemory.demuteSoundEffects();
         }
     }

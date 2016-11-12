@@ -6,9 +6,6 @@ import android.graphics.BitmapFactory;
 
 import agrumlab.cocopanda.R;
 
-/**
- * Created by Alexandre on 12/11/2016.
- */
 public enum EnumBitmaps {
     MENU_BACKGROUND(R.drawable.menu_background, 1080f, 1920f),
     MENU_HEADER(R.drawable.menu_head, 1080f, 480f),
