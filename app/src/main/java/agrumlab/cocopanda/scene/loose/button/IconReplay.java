@@ -1,11 +1,10 @@
-package agrumlab.cocopanda.button;
+package agrumlab.cocopanda.scene.loose.button;
 
 import android.graphics.Bitmap;
 
 import agrumlab.cocopanda.Surface;
-import agrumlab.cocopanda.ressources.SoundManager;
+import agrumlab.cocopanda.scene.ButtonIcon;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.game.Level_1;
 
 /**
  * Created by Alexandre on 06/02/2015.

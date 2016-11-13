@@ -143,7 +143,7 @@ public class Surface extends SurfaceView implements Runnable {
                 SoundManager.playGameMusic();
                 break;
             case LOOSE_GAME:
-                level = null;
+                level.setRunning(false);
                 drawnScenes.add(level);
                 drawnScenes.add(looseInterface);
                 touchScenes.add(looseInterface);

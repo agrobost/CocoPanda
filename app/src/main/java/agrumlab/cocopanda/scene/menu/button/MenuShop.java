@@ -1,8 +1,9 @@
-package agrumlab.cocopanda.button;
+package agrumlab.cocopanda.scene.menu.button;
 
-import android.graphics.Bitmap;
+        import android.graphics.Bitmap;
 
-import agrumlab.cocopanda.scene.Scene;
+        import agrumlab.cocopanda.scene.ButtonIcon;
+        import agrumlab.cocopanda.scene.Scene;
 
 /**
  * Created by Alexandre on 06/02/2015.

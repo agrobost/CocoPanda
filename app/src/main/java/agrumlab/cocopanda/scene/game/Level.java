@@ -5,13 +5,10 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import agrumlab.cocopanda.R;
 import agrumlab.cocopanda.Surface;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
-import agrumlab.cocopanda.button.PauseIcon;
+import agrumlab.cocopanda.scene.game.button.PauseIcon;
 import agrumlab.cocopanda.ressources.Screen;
-import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.game.game_objects.Panda;
 import agrumlab.cocopanda.scene.game.game_objects.Wallpaper;
@@ -32,12 +29,7 @@ public abstract class Level extends Scene {
     protected ArrayList<GameObject> gameObjects = new ArrayList<>();
     protected HashMap<Integer, GameObject[]> gameObjtByLvl = new HashMap<>();
     protected Score score = new Score(this);
-    protected PauseIcon pauseIcon =
-            new PauseIcon(this, EnumBitmaps.GAME_PAUSE.geBitmap(),
-                    new float[]{
-                            929f,
-                            1772f
-                    });
+    protected PauseIcon pauseIcon = new PauseIcon(this);
     protected float speed = 0;
 
     protected Level(Surface surface) {
@@ -99,6 +91,7 @@ public abstract class Level extends Scene {
         }
 
         PreferenceMemory.putGold(getScore().getGold());
+        this.surface.changeLayout(Surface.Layout.LOOSE_GAME);
         this.surface.getActivityMain().showInterstitial();
 
     }

@@ -1,14 +1,16 @@
-package agrumlab.cocopanda.button;
+package agrumlab.cocopanda.scene;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
+import java.util.ArrayList;
+
 import agrumlab.cocopanda.ressources.CanvasManager;
 import agrumlab.cocopanda.ressources.Screen;
-import agrumlab.cocopanda.scene.Scene;
 
-public abstract class ButtonIcon {
+public abstract class ButtonIcon{
+    private ArrayList observers;
     private Bitmap icon = null;
     protected Scene scene;
     private float[] coord = {0f, 0f};
@@ -19,6 +21,7 @@ public abstract class ButtonIcon {
         this.icon = icon;
         this.coord[0] = coord[0] * Screen.width / 1080f;
         this.coord[1] = coord[1] * Screen.height / 1920f;
+        observers = new ArrayList();
     }
 
     protected abstract void click();
@@ -54,4 +57,5 @@ public abstract class ButtonIcon {
         canvas.drawBitmap(icon, coord[0], coord[1], CanvasManager.getPaint(CanvasManager.IMAGE_HD));
 
     }
+
 }

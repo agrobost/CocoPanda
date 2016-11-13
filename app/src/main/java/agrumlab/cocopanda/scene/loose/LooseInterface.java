@@ -12,9 +12,9 @@ import agrumlab.cocopanda.ressources.PreferenceMemory;
 import agrumlab.cocopanda.ressources.Screen;
 import agrumlab.cocopanda.scene.Camera;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.button.ButtonIcon;
-import agrumlab.cocopanda.button.IconMenu;
-import agrumlab.cocopanda.button.IconReplay;
+import agrumlab.cocopanda.scene.ButtonIcon;
+import agrumlab.cocopanda.scene.loose.button.IconMenu;
+import agrumlab.cocopanda.scene.loose.button.IconReplay;
 
 /**
  * Created by Alexandre on 08/02/2015.

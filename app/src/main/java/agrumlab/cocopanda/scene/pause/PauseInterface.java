@@ -9,16 +9,16 @@ import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.CanvasManager;
 import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
-import agrumlab.cocopanda.button.ButtonIcon;
+import agrumlab.cocopanda.scene.ButtonIcon;
 import agrumlab.cocopanda.ressources.Screen;
 import agrumlab.cocopanda.scene.Camera;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.button.IconMenu;
-import agrumlab.cocopanda.button.PauseMusic;
-import agrumlab.cocopanda.button.PauseResume;
-import agrumlab.cocopanda.button.IconReplay;
-import agrumlab.cocopanda.button.PauseSensitivity;
-import agrumlab.cocopanda.button.PauseSoundEffects;
+import agrumlab.cocopanda.scene.loose.button.IconMenu;
+import agrumlab.cocopanda.scene.pause.button.PauseMusic;
+import agrumlab.cocopanda.scene.pause.button.PauseResume;
+import agrumlab.cocopanda.scene.loose.button.IconReplay;
+import agrumlab.cocopanda.scene.pause.button.PauseSensitivity;
+import agrumlab.cocopanda.scene.pause.button.PauseSoundEffects;
 
 /**
  * Created by Alexandre on 03/02/2015.

@@ -1,7 +1,8 @@
-package agrumlab.cocopanda.button;
+package agrumlab.cocopanda.scene.pause.button;
 
 import android.graphics.Bitmap;
 
+import agrumlab.cocopanda.scene.ButtonIcon;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
 import agrumlab.cocopanda.scene.Scene;
 

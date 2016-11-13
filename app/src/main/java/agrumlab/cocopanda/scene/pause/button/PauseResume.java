@@ -1,9 +1,9 @@
-package agrumlab.cocopanda.button;
+package agrumlab.cocopanda.scene.pause.button;
 
 import android.graphics.Bitmap;
 
 import agrumlab.cocopanda.Surface;
-import agrumlab.cocopanda.ressources.SoundManager;
+import agrumlab.cocopanda.scene.ButtonIcon;
 import agrumlab.cocopanda.scene.Scene;
 
 /**

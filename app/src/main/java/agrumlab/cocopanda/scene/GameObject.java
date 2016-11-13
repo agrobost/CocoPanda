@@ -23,7 +23,7 @@ public abstract class GameObject {
     }
 
     public float[] getCoordOnScreen() {
-        float[] coordbis = {((coord[0] - scene.getSurface().getLevel().getCamera().getCoordCamera()[0]) * Screen.width) / scene.getSurface().getLevel().getCamera().getDimCamera()[0], ((coord[1] - scene.getSurface().getLevel().getCamera().getCoordCamera()[1]) * Screen.height) / scene.getSurface().getLevel().getCamera().getDimCamera()[1]};
+        float[] coordbis = {((coord[0] - scene.getCamera().getCoordCamera()[0]) * Screen.width) / scene.getCamera().getDimCamera()[0], ((coord[1] - scene.getCamera().getCoordCamera()[1]) * Screen.height) / scene.getCamera().getDimCamera()[1]};
         return coordbis;
     }
 
