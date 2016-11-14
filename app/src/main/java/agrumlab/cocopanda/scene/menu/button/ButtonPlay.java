@@ -1,37 +1,32 @@
 package agrumlab.cocopanda.scene.menu.button;
 
-import android.graphics.Bitmap;
-import android.util.Log;
-
+import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
 
 /**
- * Created by Alexandre on 13/11/2016.
+ * Created by Alexandre on 06/02/2015.
  */
-
-public class MenuGold2 extends Button {
-
-    public MenuGold2(Scene scene) {
+public class ButtonPlay extends Button {
+    public ButtonPlay(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
-            public void buttonClicked() {
-                Log.d("lsitener","champino");
+            public void buttonClicked(Button button) {
+                button.getScene().getSurface().changeLayout(Surface.Layout.SELECT_LEVEL);
             }
         });
     }
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.MENU_COIN.geBitmap();
-        Log.d("rho","rho");
+        super.bitmap = EnumBitmaps.MENU_PLAY.geBitmap();
     }
 
     @Override
-    protected void initializePositon() {
-        setPosition(Mark.MIDDLE, 0.33f,0.33f);
+    protected void initializePosition() {
+        setPosition(Mark.TOP, 0.5f,0.416f);
     }
 }

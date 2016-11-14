@@ -13,25 +13,19 @@ import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.scene.game.Level;
+import agrumlab.cocopanda.scene.game.Level_1;
 
-/**
- * Created by Alexandre on 06/02/2015.
- */
+
 public class Bee extends GameObject {
 
-    private Random random = new Random();
-    //on peu rajouter une animation(par ex mouvement de feuille qui tombe), mais modifier collision et draw
 
-    public Bee(Scene scene, int vitesseY_min, int vitesseY_max) {
-        super(scene);
+    public Bee(Scene scene, float startTime, float vitesseY, float vitesseX, float percentageX) {
+        super(scene, startTime);
         super.bitmap = EnumBitmaps.OBJECT_BEE.geBitmap();
-        float x, y;
-        y = -bitmap.getHeight();
-        x = (random.nextInt((int) Screen.width) - (bitmap.getWidth() / 2))+ Screen.width /2;
-        super.coord = new float[]{x,y};
+        super.coord = new float[]{Screen.width*percentageX - bitmap.getWidth()/2+Screen.width/2,-bitmap.getHeight()};
 
-        super.vitesse[1] = Screen.height *(random.nextInt(vitesseY_max - vitesseY_min + 1) + vitesseY_min)/1920;
-        super.vitesse[0] = Screen.height *2/1080;
+        super.speed[1] = vitesseY;
+        super.speed[0] = vitesseX;
     }
 
     @Override
@@ -39,22 +33,26 @@ public class Bee extends GameObject {
         canvas.drawBitmap(bitmap, super.getCoordOnScreen()[0], super.getCoordOnScreen()[1], CanvasManager.getPaint(CanvasManager.IMAGE_HD));
     }
 
-
     @Override
-    public void animation(Iterator iterator) {
+    public void animation(Iterator<GameObject> iterator, float time) {
         if(super.coord[1]> Screen.height){
-            super.coord[1] = -bitmap.getHeight();
-            super.coord[0] = (random.nextInt((int) Screen.width) - (bitmap.getWidth() / 2))+ Screen.width /2;
-
+            iterator.remove();
         }else {
-            super.coord[1] = super.coord[1] + super.vitesse[1] + scene.getSurface().getLevel().getSpeed();
-            if(scene.getSurface().getLevel().getPanda().getCoord()[0]<this.coord[0]){
-                super.coord[0] = super.coord[0] - super.vitesse[0];
+            super.coord[1] = super.coord[1] + super.speed[1] * time / 1000f;
+            if(super.coord[1]<Screen.height/3){
+                return;
+            }
+            if(Math.abs(scene.getSurface().getLevel().getPanda().getCoord()[0]-this.coord[0])<10d){
+
+            }
+            else if(scene.getSurface().getLevel().getPanda().getCoord()[0]<this.coord[0]){
+                super.coord[0] = super.coord[0] - super.speed[0] * time / 1000f;
             }else{
-                super.coord[0] = super.coord[0] + super.vitesse[0];
+                super.coord[0] = super.coord[0] + super.speed[0] * time / 1000f;
             }
         }
     }
+
 
     @Override
     protected void inCollision(GameObject panda, Iterator iterator) {
@@ -62,8 +60,6 @@ public class Bee extends GameObject {
         Level level = scene.getSurface().getLevel();
         level.getScore().setNumberLife(level.getScore().getNumberLife() - 1);
         iterator.remove();
-        //le top serait de créer une fonction destroy dans game_object_coco pour lancer une animation de l'explosion de la game_object_coco et la détruire par la suite
-        //aussi lancer une animation sur le panda genre le front rouge
     }
 
 }

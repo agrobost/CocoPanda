@@ -1,34 +1,34 @@
-package agrumlab.cocopanda.scene.game.button;
+package agrumlab.cocopanda.scene.pause.button;
 
 import agrumlab.cocopanda.Surface;
-import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.ressources.EnumBitmaps;
+import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
 
 /**
- * Created by Alexandre on 06/02/2015.
+ * Created by Alexandre on 08/02/2015.
  */
-public class PauseIcon extends Button {
+public class ButtonMenu extends Button {
 
-    public PauseIcon(Scene scene) {
+    public ButtonMenu(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
             public void buttonClicked(Button button) {
-                button.getScene().getSurface().changeLayout(Surface.Layout.PAUSE_GAME);
+                button.getScene().getSurface().changeLayout(Surface.Layout.MENU);
             }
         });
     }
 
+
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.GAME_PAUSE.geBitmap();
+        super.bitmap = EnumBitmaps.PAUSE_MENU.geBitmap();
     }
 
     @Override
     protected void initializePosition() {
-        setPosition(Mark.TOP_LEFT, 0.8602f,0.9229f);
+        setPosition(Mark.TOP_LEFT,0.6175f,0.6213f);
     }
-
 }

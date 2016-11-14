@@ -9,69 +9,48 @@ import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.ressources.Screen;
 import agrumlab.cocopanda.scene.Camera;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.menu.button.MenuGold2;
-import agrumlab.cocopanda.scene.menu.button.MenuPlay;
+import agrumlab.cocopanda.scene.menu.button.ButtonGold;
+import agrumlab.cocopanda.scene.menu.button.ButtonPlay;
+import agrumlab.cocopanda.scene.menu.button.ButtonRank;
+import agrumlab.cocopanda.scene.menu.button.ButtonShop;
 
 /**
  * Created by Alexandre on 06/02/2015.
  */
 public class SceneMenu extends Scene {
 
-    private MenuGold2 menuGold;
-    //private MenuShop menuShop;
-    private MenuPlay menuPlay;
-    //private MenuRank menuRank;
+    private ButtonGold buttonGold;
+    private ButtonShop buttonShop;
+    private ButtonPlay buttonPlay;
+    private ButtonRank buttonRank;
 
 
     public SceneMenu(Surface surface) {
         super(surface);
-        //menuRank = new MenuRank(this,BitmapManager.getBitMap(BitmapManager.MENU_RANK), new float[]{54f, 1677f});
-        menuPlay = new MenuPlay(this, EnumBitmaps.MENU_PLAY.geBitmap(), new float[]{278f, 800f});
-        //menuShop = new MenuShop(this,BitmapManager.getBitMap(BitmapManager.MENU_SHOP), new float[]{587f, 1677f});
-        menuGold = new MenuGold2(this);
+        buttonRank = new ButtonRank(this);
+        buttonPlay = new ButtonPlay(this);
+        buttonShop = new ButtonShop(this);
+        buttonGold = new ButtonGold(this);
+        this.addButton(buttonGold);
+        this.addButton(buttonPlay);
+        this.addButton(buttonShop);
+        this.addButton(buttonGold);
     }
 
     @Override
     public void drawScene(Canvas canvas) {
         canvas.drawBitmap(EnumBitmaps.MENU_BACKGROUND.geBitmap(), 0f, 0f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         canvas.drawBitmap(EnumBitmaps.MENU_HEADER.geBitmap(), 0f, 0f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
-
-        menuGold.draw(canvas);
-        // menuShop.draw(canvas);
-        menuPlay.draw(canvas);
-        // menuRank.draw(canvas);
-
+        buttonGold.draw(canvas);
+        buttonShop.draw(canvas);
+        buttonPlay.draw(canvas);
+        buttonRank.draw(canvas);
     }
+
 
     @Override
     public void initializeScene() {
         super.camera = new Camera(new float[]{0, 0}, new float[]{Screen.width, Screen.height});
     }
 
-    @Override
-    public void touch(MotionEvent event) {
-
-        switch (event.getActionMasked()) {
-            case MotionEvent.ACTION_DOWN:
-                menuGold.actionDown(event);
-                menuPlay.actionDown(event);
-                //menuRank.actionDown(event);
-                // menuShop.actionDown(event);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                menuGold.actionMove(event);
-                menuPlay.actionMove(event);
-                // menuRank.actionMove(event);
-                // menuShop.actionMove(event);
-                break;
-
-            case MotionEvent.ACTION_UP:
-                menuGold.actionUp(event);
-                menuPlay.actionUp(event);
-                // menuRank.actionUp(event);
-                //  menuShop.actionUp(event);
-                break;
-        }
-
-    }
 }

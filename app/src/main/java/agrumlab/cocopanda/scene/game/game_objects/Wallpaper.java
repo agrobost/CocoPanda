@@ -12,10 +12,11 @@ import agrumlab.cocopanda.scene.Scene;
 /**
  * Created by Alexandre on 30/01/2015.
  */
+
 public class Wallpaper extends GameObject {
 
     public Wallpaper(Scene scene) {
-        super(scene);
+        super(scene, 0f);
         super.bitmap = EnumBitmaps.GAME_BACKGROUND.geBitmap();
     }
 
@@ -30,7 +31,9 @@ public class Wallpaper extends GameObject {
     }
 
     @Override
-    public void animation(Iterator iterator) {
-        //ici possibilité de rajouter une vibration pour simuler un tremblement de terre par exemple, mais pour l'instant on s'en bat les couilles
+    public void animation(Iterator<GameObject> iterator, float time) {
+
     }
+
+
 }

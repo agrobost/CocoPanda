@@ -34,7 +34,9 @@ public enum EnumBitmaps {
     LOOSE_STAR_EMPTY(R.drawable.loose_star_empty, 257f, 246f),
     LOOSE_STAR_FILL(R.drawable.loose_star_fill, 257f, 246f),
     REPLAY(R.drawable.pause_replay, 243f, 243f),
-    MENU(R.drawable.pause_menu, 243f, 243f);
+    PAUSE_MENU(R.drawable.pause_menu, 243f, 243f),
+    SELECT_LEVEL_BACKGROUND(R.drawable.select_level_background,1080f,1920f),
+    SELECT_LEVEL_BACK_BUTTON(R.drawable.select_level_back_button,244f,244f);
 
     private float width;
     private float height;

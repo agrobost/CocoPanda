@@ -13,23 +13,16 @@ import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
 
-/**
- * Created by Alexandre on 09/02/2015.
- */
 public class Coin extends GameObject {
     private Random random = new Random();
     //on peu rajouter une animation(par ex mouvement de feuille qui tombe), mais modifier collision et draw
 
-    public Coin(Scene scene, int vitesseY_min, int vitesseY_max) {
-        super(scene);
+    public Coin(Scene scene, float startTime, float vitesseY, float percentageX)  {
+        super(scene, startTime);
         super.bitmap = EnumBitmaps.OBJECT_COIN.geBitmap();
+        super.coord = new float[]{Screen.width*percentageX - bitmap.getWidth()/2+Screen.width/2,-bitmap.getHeight()};
 
-        float x, y;
-        y = -bitmap.getHeight();
-        x = (random.nextInt((int) Screen.width) - (bitmap.getWidth() / 2))+ Screen.width /2;
-        super.coord = new float[]{x,y};
-
-        super.vitesse[1] = Screen.height *(random.nextInt(vitesseY_max - vitesseY_min + 1) + vitesseY_min)/1920;
+        super.speed[1] = vitesseY;
     }
 
     @Override
@@ -37,15 +30,15 @@ public class Coin extends GameObject {
         canvas.drawBitmap(bitmap, super.getCoordOnScreen()[0], super.getCoordOnScreen()[1], CanvasManager.getPaint(CanvasManager.IMAGE_HD));
     }
 
-
     @Override
-    public void animation(Iterator iterator) {
+    public void animation(Iterator<GameObject> iterator, float time) {
         if(super.coord[1]> Screen.height){
             iterator.remove();
         }else {
-            super.coord[1] = super.coord[1] + super.vitesse[1] + scene.getSurface().getLevel().getSpeed();
+            super.coord[1] = super.coord[1] + super.speed[1] * time / 1000f;
         }
     }
+
 
     @Override
     protected void inCollision(GameObject panda, Iterator iterator) {

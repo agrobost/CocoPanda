@@ -1,27 +1,26 @@
 package agrumlab.cocopanda.scene.game;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import agrumlab.cocopanda.Surface;
-import agrumlab.cocopanda.ressources.SoundManager;
+import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.game.game_objects.Bee;
 import agrumlab.cocopanda.scene.game.game_objects.Coco;
 import agrumlab.cocopanda.scene.game.game_objects.Coeur;
-import agrumlab.cocopanda.scene.GameObject;
-import agrumlab.cocopanda.scene.game.game_objects.Coin;
-import agrumlab.cocopanda.scene.game.game_objects.SlowingDown;
+import agrumlab.cocopanda.scene.game.game_objects.Wallpaper;
 
 /**
  * Created by Alexandre on 28/01/2015.
  */
 public class Level_1 extends Level {
 
-    private double repere = 0;
-    private double duree = 0;
-    private int difficult = 0;
+    private double mark = 0;
+    private double time = 0;
+    private double lapse = 0;
 
     public Level_1(Surface surface) {
         super(surface);
@@ -29,76 +28,75 @@ public class Level_1 extends Level {
         super.twoStar = 65; //80s
         super.threeStar = 80; //100s
         super.reference = "level_one";
-        gameObjtByLvl.put(0, new GameObject[]{new Coco(this, 20, 25), new Coeur(this, 10, 20), new Bee(this, 20, 25)});
-        gameObjtByLvl.put(1, new GameObject[]{new Coco(this, 20, 25), new Coeur(this, 10, 20)});
-        gameObjtByLvl.put(2, new GameObject[]{new Coco(this, 25, 30), new Bee(this, 20, 25)});
-        gameObjtByLvl.put(3, new GameObject[]{new Coco(this, 25, 30), new Coeur(this, 10, 20)});
-        gameObjtByLvl.put(4, new GameObject[]{new Coco(this, 30, 31), new SlowingDown(this, 10, 20)});
-        gameObjtByLvl.put(5, new GameObject[]{new Coco(this, 30, 32), new Bee(this, 20, 25), new Coin(this, 20, 25)});
-        gameObjtByLvl.put(6, new GameObject[]{new Coco(this, 30, 33), new Coeur(this, 10, 20)});
-        gameObjtByLvl.put(7, new GameObject[]{new Coco(this, 30, 34), new Coin(this, 20, 25)});
-        gameObjtByLvl.put(8, new GameObject[]{new Coco(this, 35, 36), new Coeur(this, 20, 30), new Bee(this, 20, 25)});
-        gameObjtByLvl.put(9, new GameObject[]{new Coco(this, 35, 37), new SlowingDown(this, 20, 30)});
-        gameObjtByLvl.put(10, new GameObject[]{new Coco(this, 35, 38), new Coeur(this, 10, 20), new Coin(this, 20, 25)});
-        gameObjtByLvl.put(11, new GameObject[]{new Coco(this, 35, 39), new SlowingDown(this, 20, 30), new Coeur(this, 20, 30)});
-        gameObjtByLvl.put(12, new GameObject[]{new Coco(this, 40, 41), new Coeur(this, 10, 20), new Bee(this, 20, 25)});
-        gameObjtByLvl.put(13, new GameObject[]{new Coco(this, 40, 42), new SlowingDown(this, 20, 30), new Coeur(this, 20, 30)});
-        gameObjtByLvl.put(14, new GameObject[]{new Coco(this, 40, 43), new Coeur(this, 10, 20), new Coin(this, 20, 25)});
-        gameObjtByLvl.put(15, new GameObject[]{new Coco(this, 40, 44), new SlowingDown(this, 30, 40)});
-        gameObjtByLvl.put(16, new GameObject[]{new Coco(this, 45, 46), new Coeur(this, 30, 40), new Bee(this, 20, 25)});
-        gameObjtByLvl.put(17, new GameObject[]{new Coco(this, 45, 47), new SlowingDown(this, 30, 40)});
-        gameObjtByLvl.put(18, new GameObject[]{new Coco(this, 45, 60), new Coeur(this, 30, 40), new Coin(this, 20, 25)});
-        gameObjtByLvl.put(19, new GameObject[]{new Coco(this, 45, 60), new SlowingDown(this, 30, 40), new Bee(this, 20, 25)});
+
+        gameObjects.add(new Bee(this,0f,500f,320f,0.5f));
+
+        gameObjects.add(new Bee(this,250f,500f,320f,33.33f/100f));
+        gameObjects.add(new Bee(this,250f,500f,320f,33.33f*2f/100f));
+
+        gameObjects.add(new Bee(this,500f,500f,320f,100f/4*1f/100f));
+        gameObjects.add(new Bee(this,500f,500f,320f,100f/4*2f/100f));
+        gameObjects.add(new Bee(this,500f,500f,320f,100f/4*3f/100f));
+
+        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*1f/100f));
+        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*2f/100f));
+        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*3f/100f));
+        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*4f/100f));
+
+        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*1f/100f));
+        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*2f/100f));
+        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*3f/100f));
+        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*4f/100f));
+        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*-1f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*5f/100f));
+
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*1f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*2f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*3f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*4f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*-1f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*5f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*-2f/100f));
+        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*6f/100f));
 
     }
 
 
     @Override
     public void drawScene(Canvas canvas) {
-
-
         wallpaper.draw(canvas);
-
+        if (mark == 0) {
+            mark = System.currentTimeMillis();
+        }
         if (running) {
             pauseIcon.draw(canvas);
-        }
-        score.drawScene(canvas, running);
-
-        //update difficult lvl
-        if (running && difficult < gameObjtByLvl.size()) {
-            duree = System.currentTimeMillis() - repere;
-            if (7e3 < duree || difficult == 0) {
-                repere = System.currentTimeMillis();
-                for (GameObject gameObjectParcouru : gameObjtByLvl.get(difficult)) {
-                    gameObjects.add(gameObjectParcouru);
-                }
-                difficult++;
-            }
-
+            lapse = System.currentTimeMillis() - mark;
+            time += lapse;
+            mark = System.currentTimeMillis();
         } else {
-            repere = System.currentTimeMillis() - duree;
+            mark = System.currentTimeMillis();
         }
+        score.drawScene(canvas, running, (float) time);
+        for (Iterator<GameObject> iterator = gameObjects.iterator(); iterator.hasNext(); ) {
 
-        //fetch gameObject
-        for (Iterator<GameObject> iterator = getGameObjects().iterator(); iterator.hasNext(); ) {
-            GameObject gameObjectParcouru = iterator.next();
-
-
-            gameObjectParcouru.draw(canvas);
-
-            //update data
-            if (running) {
-                gameObjectParcouru.animation(iterator);
-                gameObjectParcouru.ifCollision(panda, iterator);
+            GameObject gameObject = iterator.next();
+            if (gameObject.getStartTime() > time) {
+                break;
             }
+
+            if (running) {
+                gameObject.animation(iterator, (float) lapse);
+                gameObject.ifCollision(panda, iterator);
+            }
+            gameObject.draw(canvas);
+
+
         }
+
         panda.draw(canvas);
 
 
     }
 
-    public ArrayList<GameObject> getGameObjects() {
-        return gameObjects;
-    }
 
 }

@@ -10,16 +10,22 @@ import agrumlab.cocopanda.ressources.Screen;
 
 public abstract class GameObject {
 
-    protected float[] coord = {0f, 0f}, vitesse = {0f, 0f};
+    protected float[] coord = {0f, 0f}, speed = {0f, 0f};
     protected Bitmap bitmap = null;
     protected Scene scene;
+    protected float startTime;
+
+    public float getStartTime() {
+        return startTime;
+    }
 
     public abstract void draw(Canvas canvas);
 
-    public abstract void animation(Iterator iterator);
+    public abstract void animation(Iterator<GameObject> iterator, float time);
 
-    public GameObject(Scene scene) {
+    public GameObject(Scene scene, float startTime) {
         this.scene = scene;
+        this.startTime = startTime;
     }
 
     public float[] getCoordOnScreen() {
@@ -64,12 +70,16 @@ public abstract class GameObject {
 
     protected abstract void inCollision(GameObject gameObject, Iterator iterator);
 
-    public float[] getVitesse() {
-        return vitesse;
+    public float[] getSpeed() {
+        return speed;
     }
 
-    public void setVitesse(float[] vitesse) {
-        this.vitesse = vitesse;
+    public void setSpeed(float[] speed) {
+        this.speed = speed;
     }
 
+    @Override
+    public String toString() {
+        return coord[0]+"/"+coord[1];
+    }
 }

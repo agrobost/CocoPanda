@@ -3,19 +3,21 @@ package agrumlab.cocopanda.scene;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
-import agrumlab.cocopanda.ActivityMain;
+import java.util.ArrayList;
+
 import agrumlab.cocopanda.Surface;
 
-/**
- * Created by Alexandre on 28/01/2015.
- */
 public abstract class Scene {
 
     protected Camera camera = null;
+    protected ArrayList<Button> buttons;
+    protected ArrayList<GameObject> gameObjects;
     protected Surface surface;
 
     protected Scene(Surface surface) {
         this.surface = surface;
+        this.buttons = new ArrayList<>();
+        this.gameObjects = new ArrayList<>();
         initializeScene();
     }
 
@@ -23,8 +25,20 @@ public abstract class Scene {
 
     public abstract void initializeScene();
 
-    public abstract void touch(MotionEvent event);
 
+    public void touch(MotionEvent event) {
+        for (Button button : buttons) {
+            button.touch(event);
+        }
+    }
+
+    public void addButton(Button button) {
+        this.buttons.add(button);
+    }
+
+    private void addGameObject(GameObject gameObject) {
+        this.gameObjects.add(gameObject);
+    }
 
     public Camera getCamera() {
         return camera;

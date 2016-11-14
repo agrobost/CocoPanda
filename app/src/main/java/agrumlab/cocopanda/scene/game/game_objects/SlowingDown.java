@@ -19,6 +19,7 @@ import agrumlab.cocopanda.scene.game.Level;
 /**
  * Created by Alexandre on 30/01/2015.
  */
+/*
 public class SlowingDown extends GameObject {
 
     private Random random = new Random();
@@ -47,11 +48,11 @@ public class SlowingDown extends GameObject {
             /*
             super.coord[1] = -bitmap.getHeight();
             super.coord[0] = (random.nextInt(1080) - (bitmap.getWidth() / 2))+1080/2;
-            */
+            *//*
             iterator.remove();
 
         }else {
-            super.coord[1] = super.coord[1] + super.vitesse[1] + scene.getSurface().getLevel().getSpeed();
+            super.coord[1] = super.coord[1] + super.vitesse[1] ;
         }
     }
 
@@ -60,9 +61,9 @@ public class SlowingDown extends GameObject {
         SoundManager.playSoundEffect(R.raw.timer);
         Level level = scene.getSurface().getLevel();
         iterator.remove();
-        scene.getSurface().getLevel().setSpeed(-10f * Screen.adjustHeight);
+       // scene.getSurface().getLevel().setSpeed(-10f * Screen.adjustHeight);
         Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+       /* timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 scene.getSurface().getLevel().setSpeed(0);
@@ -72,3 +73,4 @@ public class SlowingDown extends GameObject {
         //aussi lancer une animation sur le panda genre le front rouge
     }
 }
+*/

@@ -16,6 +16,7 @@ import agrumlab.cocopanda.scene.game.Level_1;
 import agrumlab.cocopanda.scene.loose.LooseInterface;
 import agrumlab.cocopanda.scene.menu.SceneMenu;
 import agrumlab.cocopanda.scene.pause.PauseInterface;
+import agrumlab.cocopanda.scene.selection_level.SelectionLevel;
 
 /**
  * Created by Alexandre on 28/01/2015.
@@ -32,6 +33,7 @@ public class Surface extends SurfaceView implements Runnable {
     private PauseInterface pauseInterface = null;
     private SceneMenu sceneMenu = null;
     private LooseInterface looseInterface = null;
+    private SelectionLevel selectionLevel = null;
 
 
     public Surface(ActivityMain activityMain) {
@@ -43,6 +45,7 @@ public class Surface extends SurfaceView implements Runnable {
         this.pauseInterface = new PauseInterface(this);
         this.sceneMenu = new SceneMenu(this);
         this.looseInterface = new LooseInterface(this);
+        this.selectionLevel = new SelectionLevel(this);
 
         changeLayout(Layout.MENU);
     }
@@ -112,7 +115,7 @@ public class Surface extends SurfaceView implements Runnable {
     }
 
     public enum Layout {
-        MENU, NEW_GAME, PAUSE_GAME, RESUME_GAME, LOOSE_GAME, REPLAY;
+        MENU, SELECT_LEVEL, NEW_GAME, PAUSE_GAME, RESUME_GAME, LOOSE_GAME, REPLAY;
     }
 
     public void changeLayout(Layout layout) {
@@ -157,9 +160,10 @@ public class Surface extends SurfaceView implements Runnable {
                 SoundManager.stopGameMusic();
                 SoundManager.playGameMusic();
                 break;
-            default: {
-                throw new IllegalArgumentException("Can't yet handle " + layout);
-            }
+            case SELECT_LEVEL:
+                drawnScenes.add(selectionLevel);
+                touchScenes.add(selectionLevel);
+                break;
         }
     }
 

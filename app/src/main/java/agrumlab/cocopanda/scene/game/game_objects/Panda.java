@@ -16,12 +16,13 @@ import agrumlab.cocopanda.scene.Scene;
 /**
  * Created by Alexandre on 30/01/2015.
  */
+
 public class Panda extends GameObject {
 
     //un peu rajouter une animation(par ex pour simuler un leger mouvemen), mais modifier collision et draw
 
     public Panda(Scene scene) {
-        super(scene);
+        super(scene,0f);
         super.bitmap = EnumBitmaps.OBJECT_PANDA.geBitmap();
 
         float x, y;
@@ -37,12 +38,13 @@ public class Panda extends GameObject {
         canvas.drawBitmap(bitmap, super.getCoordOnScreen()[0], super.getCoordOnScreen()[1], CanvasManager.getPaint(CanvasManager.IMAGE_HD));
     }
 
-
-
     @Override
-    public void animation(Iterator iterator) {
-        //inutile car l'update se fais par le biais du touchevent
+    public void animation(Iterator<GameObject> iterator, float time) {
+
     }
+
+
+
 
     public Bitmap getBitmap() {
         return bitmap;
@@ -52,7 +54,7 @@ public class Panda extends GameObject {
     protected void inCollision(GameObject gameObject, Iterator iterator) {
         //inutile
     }
-    //*****************controller event to move panda********************//
+
 
     private float xDown = 0f, xMove = 0f, distanceDowntoMove = 0f;
     private float[] pandaInitial = {0f, 0f};

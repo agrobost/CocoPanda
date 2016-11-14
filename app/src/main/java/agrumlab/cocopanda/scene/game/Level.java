@@ -25,15 +25,14 @@ public abstract class Level extends Scene {
     public float oneStar, twoStar, threeStar;
     protected Boolean running = true;
     protected Panda panda = new Panda(this);
-    protected GameObject wallpaper = new Wallpaper(this);
+    protected Wallpaper wallpaper = new Wallpaper(this);
     protected ArrayList<GameObject> gameObjects = new ArrayList<>();
-    protected HashMap<Integer, GameObject[]> gameObjtByLvl = new HashMap<>();
     protected Score score = new Score(this);
     protected PauseIcon pauseIcon = new PauseIcon(this);
-    protected float speed = 0;
 
     protected Level(Surface surface) {
         super(surface);
+        this.addButton(pauseIcon);
     }
 
     @Override
@@ -43,19 +42,17 @@ public abstract class Level extends Scene {
 
     @Override
     public void touch(MotionEvent event) {
+        super.touch(event);
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 panda.actionDown(event);
-                pauseIcon.actionDown(event);
                 break;
 
             case MotionEvent.ACTION_MOVE:
                 panda.actionMove(event);
-                pauseIcon.actionMove(event);
                 break;
 
             case MotionEvent.ACTION_UP:
-                pauseIcon.actionUp(event);
                 break;
         }
 
@@ -73,11 +70,6 @@ public abstract class Level extends Scene {
 
     public ArrayList<GameObject> getGameObjects() {
         return gameObjects;
-    }
-
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
     }
 
     public Boolean isRunning() {
@@ -100,7 +92,4 @@ public abstract class Level extends Scene {
         this.running = running;
     }
 
-    public float getSpeed() {
-        return speed;
-    }
 }

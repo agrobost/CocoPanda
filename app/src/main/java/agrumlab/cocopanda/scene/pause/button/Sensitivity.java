@@ -13,7 +13,7 @@ import agrumlab.cocopanda.scene.Scene;
 /**
  * Created by Alexandre on 08/02/2015.
  */
-public class PauseSensitivity {
+public class Sensitivity {
     private Bitmap icon = null;
     private float[] coord = {0f, 0f};
 
@@ -23,7 +23,7 @@ public class PauseSensitivity {
     private boolean autorisation = false;
     private Scene scene;
 
-    public PauseSensitivity(Scene scene) {
+    public Sensitivity(Scene scene) {
         this.scene = scene;
         pointRepere = new float[]{160f * Screen.adjustWidth, 968f * Screen.adjustHeight};
         width_max = 760 * Screen.adjustWidth;

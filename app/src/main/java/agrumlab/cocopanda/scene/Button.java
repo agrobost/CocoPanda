@@ -17,7 +17,9 @@ public abstract class Button implements ButtonObservable {
     protected Bitmap bitmap = null;
     private Scene scene;
     protected Position position;
-    protected enum Mark{
+    private boolean down = false;
+
+    protected enum Mark {
         LEFT, TOP_LEFT, TOP, TOP_RIGHT, RIGHT, BOT_RIGHT, BOT, BOT_LEFT, MIDDLE;
     }
 
@@ -25,37 +27,36 @@ public abstract class Button implements ButtonObservable {
         this.scene = scene;
         buttonListeners = new ArrayList<>();
         initializeBitmap();
-        initializePositon();
+        initializePosition();
     }
 
     protected abstract void initializeBitmap();
 
-    protected abstract void initializePositon();
+    protected abstract void initializePosition();
 
+    public void touch(MotionEvent event) {
+        switch (event.getActionMasked()) {
+            case MotionEvent.ACTION_DOWN:
+                if (event.getX() >= position.getX() && event.getX() <= position.getX() + bitmap.getWidth() && event.getY() >= position.getY() && event.getY() <= position.getY() + bitmap.getHeight()) {
+                    down = true;
+                } else {
+                    down = false;
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (!(event.getX() >= position.getX() && event.getX() <= position.getX() + bitmap.getWidth() && event.getY() >= position.getY() && event.getY() <= position.getY() + bitmap.getHeight())) {
+                    down = false;
+                } else {
+                    down = true;
+                }
+                break;
 
-    private boolean down = false;
-
-    public void actionDown(MotionEvent event) {
-        if (event.getX() >= position.getX() && event.getX() <= position.getX() + bitmap.getWidth() && event.getY() >= position.getY() && event.getY() <= position.getY() + bitmap.getHeight()) {
-            down = true;
-        } else {
-            down = false;
-        }
-    }
-
-    //si le doigt ne sort pas du bouton
-    public void actionMove(MotionEvent event) {
-        if (!(event.getX() >= position.getX() && event.getX() <= position.getX() + bitmap.getWidth() && event.getY() >= position.getY() && event.getY() <= position.getY() + bitmap.getHeight())) {
-            down = false;
-        } else {
-            down = true;
-        }
-    }
-
-    public void actionUp(MotionEvent event) {
-        if (down) {
-            down = false;
-            notifyListenerButtonClicked();
+            case MotionEvent.ACTION_UP:
+                if (down) {
+                    down = false;
+                    notifyListenerButtonClicked();
+                }
+                break;
         }
     }
 
@@ -73,24 +74,29 @@ public abstract class Button implements ButtonObservable {
     @Override
     public void removeButtonListener(ButtonListener buttonListener) {
         int i = buttonListeners.indexOf(buttonListener);
-        if(i>=0){
+        if (i >= 0) {
             buttonListeners.remove(i);
         }
     }
 
+    public Scene getScene() {
+        return scene;
+    }
+
     @Override
     public void notifyListenerButtonClicked() {
-        for(int i = 0; i < buttonListeners.size(); i++){
+        for (int i = 0; i < buttonListeners.size(); i++) {
             ButtonListener buttonListener = buttonListeners.get(i);
-            buttonListener.buttonClicked();
+            buttonListener.buttonClicked(this);
         }
     }
-    public void setPosition(Mark mark, float percentageX, float percentageY){
+
+    public void setPosition(Mark mark, float percentageX, float percentageY) {
         float adjustX_withMark = 0f, adjustY_withMark = 0f;
         float realX, realY;
         float widthBitmap = bitmap.getWidth();
         float heightBitmap = bitmap.getHeight();
-        switch (mark){
+        switch (mark) {
             case LEFT:
                 adjustX_withMark = 0f;
                 adjustY_withMark = -0.5f;
@@ -128,10 +134,10 @@ public abstract class Button implements ButtonObservable {
                 adjustY_withMark = -0.5f;
                 break;
         }
-        adjustX_withMark = adjustX_withMark*widthBitmap;
-        adjustY_withMark = adjustY_withMark*heightBitmap;
-        realX = Screen.width*percentageX + adjustX_withMark;
-        realY = Screen.height*percentageY + adjustY_withMark;
-        this.position = new Position(realX,realY);
+        adjustX_withMark = adjustX_withMark * widthBitmap;
+        adjustY_withMark = adjustY_withMark * heightBitmap;
+        realX = Screen.width * percentageX + adjustX_withMark;
+        realY = Screen.height * percentageY + adjustY_withMark;
+        this.position = new Position(realX, realY);
     }
 }

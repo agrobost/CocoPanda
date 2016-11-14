@@ -10,25 +10,28 @@ import agrumlab.cocopanda.ressources.CanvasManager;
 import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
 import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Camera;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.ButtonIcon;
-import agrumlab.cocopanda.scene.loose.button.IconMenu;
-import agrumlab.cocopanda.scene.loose.button.IconReplay;
+import agrumlab.cocopanda.scene.pause.button.ButtonMenu;
+import agrumlab.cocopanda.scene.pause.button.ButtonReplay;
 
 /**
  * Created by Alexandre on 08/02/2015.
  */
 public class LooseInterface extends Scene {
 
-    private ButtonIcon pauseReplay, pauseMenu;
+    private Button pauseReplay, pauseMenu;
     private DecimalFormat df = new DecimalFormat("#.##");
 
 
     public LooseInterface(Surface surface) {
         super(surface);
-        pauseReplay = new IconReplay(this, EnumBitmaps.REPLAY.geBitmap(), new float[]{246f, 1205f});
-        pauseMenu = new IconMenu(this, EnumBitmaps.MENU.geBitmap(), new float[]{600f, 1205f});
+        pauseReplay = new ButtonReplay(this);
+        pauseMenu = new ButtonMenu(this);
+        this.addButton(pauseReplay);
+        this.addButton(pauseMenu);
+
     }
 
     @Override
@@ -65,26 +68,5 @@ public class LooseInterface extends Scene {
     @Override
     public void initializeScene() {
         this.camera = new Camera(new float[]{0f, 0f}, new float[]{Screen.width, Screen.height});
-    }
-
-    @Override
-    public void touch(MotionEvent event) {
-        switch (event.getActionMasked()) {
-            case MotionEvent.ACTION_DOWN:
-                pauseReplay.actionDown(event);
-                pauseMenu.actionDown(event);
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-                pauseReplay.actionMove(event);
-                pauseMenu.actionMove(event);
-                break;
-
-            case MotionEvent.ACTION_UP:
-                pauseReplay.actionUp(event);
-                pauseMenu.actionUp(event);
-                break;
-        }
-
     }
 }
