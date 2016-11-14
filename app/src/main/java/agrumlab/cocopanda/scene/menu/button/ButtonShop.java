@@ -15,7 +15,7 @@ public class ButtonShop extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.MENU_SHOP.geBitmap();
+        super.bitmap = EnumBitmaps.MENU_SHOP.getBitmap();
     }
 
     @Override

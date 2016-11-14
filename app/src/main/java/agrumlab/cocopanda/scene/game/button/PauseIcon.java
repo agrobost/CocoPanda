@@ -23,7 +23,7 @@ public class PauseIcon extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.GAME_PAUSE.geBitmap();
+        super.bitmap = EnumBitmaps.GAME_PAUSE.getBitmap();
     }
 
     @Override

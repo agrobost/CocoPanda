@@ -27,7 +27,7 @@ public class ButtonSoundEffects extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.PAUSE_SOUND_EFFECTS.geBitmap();
+        super.bitmap = EnumBitmaps.PAUSE_SOUND_EFFECTS.getBitmap();
     }
 
     @Override

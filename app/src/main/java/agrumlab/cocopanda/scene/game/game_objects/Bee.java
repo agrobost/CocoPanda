@@ -3,7 +3,6 @@ package agrumlab.cocopanda.scene.game.game_objects;
 import android.graphics.Canvas;
 
 import java.util.Iterator;
-import java.util.Random;
 
 import agrumlab.cocopanda.R;
 import agrumlab.cocopanda.ressources.CanvasManager;
@@ -13,7 +12,6 @@ import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.scene.game.Level;
-import agrumlab.cocopanda.scene.game.Level_1;
 
 
 public class Bee extends GameObject {
@@ -21,7 +19,7 @@ public class Bee extends GameObject {
 
     public Bee(Scene scene, float startTime, float vitesseY, float vitesseX, float percentageX) {
         super(scene, startTime);
-        super.bitmap = EnumBitmaps.OBJECT_BEE.geBitmap();
+        super.bitmap = EnumBitmaps.OBJECT_BEE.getBitmap();
         super.coord = new float[]{Screen.width*percentageX - bitmap.getWidth()/2+Screen.width/2,-bitmap.getHeight()};
 
         super.speed[1] = vitesseY;

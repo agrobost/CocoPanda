@@ -22,7 +22,7 @@ public class ButtonRank extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.MENU_RANK.geBitmap();
+        super.bitmap = EnumBitmaps.MENU_RANK.getBitmap();
     }
 
     @Override

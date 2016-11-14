@@ -23,7 +23,7 @@ public class ButtonResume extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.PAUSE_RESUME.geBitmap();
+        super.bitmap = EnumBitmaps.PAUSE_RESUME.getBitmap();
     }
 
     @Override

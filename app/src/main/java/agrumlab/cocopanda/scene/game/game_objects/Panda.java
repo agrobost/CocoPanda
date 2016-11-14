@@ -23,7 +23,7 @@ public class Panda extends GameObject {
 
     public Panda(Scene scene) {
         super(scene,0f);
-        super.bitmap = EnumBitmaps.OBJECT_PANDA.geBitmap();
+        super.bitmap = EnumBitmaps.OBJECT_PANDA.getBitmap();
 
         float x, y;
         x = Screen.width - bitmap.getWidth() / 2;

@@ -1,7 +1,6 @@
 package agrumlab.cocopanda.scene.menu;
 
 import android.graphics.Canvas;
-import android.view.MotionEvent;
 
 import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.CanvasManager;
@@ -39,8 +38,8 @@ public class SceneMenu extends Scene {
 
     @Override
     public void drawScene(Canvas canvas) {
-        canvas.drawBitmap(EnumBitmaps.MENU_BACKGROUND.geBitmap(), 0f, 0f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
-        canvas.drawBitmap(EnumBitmaps.MENU_HEADER.geBitmap(), 0f, 0f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+        canvas.drawBitmap(EnumBitmaps.MENU_BACKGROUND.getBitmap(), 0f, 0f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+        canvas.drawBitmap(EnumBitmaps.MENU_HEADER.getBitmap(), 0f, 0f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         buttonGold.draw(canvas);
         buttonShop.draw(canvas);
         buttonPlay.draw(canvas);

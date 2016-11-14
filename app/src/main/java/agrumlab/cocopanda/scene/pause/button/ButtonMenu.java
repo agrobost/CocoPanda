@@ -24,7 +24,7 @@ public class ButtonMenu extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.PAUSE_MENU.geBitmap();
+        super.bitmap = EnumBitmaps.PAUSE_MENU.getBitmap();
     }
 
     @Override

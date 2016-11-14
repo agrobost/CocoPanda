@@ -1,7 +1,6 @@
 package agrumlab.cocopanda.scene.loose;
 
 import android.graphics.Canvas;
-import android.view.MotionEvent;
 
 import java.text.DecimalFormat;
 
@@ -36,7 +35,7 @@ public class LooseInterface extends Scene {
 
     @Override
     public void drawScene(Canvas canvas) {
-        CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_BACKGROUND.geBitmap(), 94f, 370f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+        CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_BACKGROUND.getBitmap(), 94f, 370f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         pauseMenu.draw(canvas);
         pauseReplay.draw(canvas);
         CanvasManager.drawTextAdjust(canvas, surface.getLevel().getScore().toString() + " s", 540f, 644f, CanvasManager.getPaint(CanvasManager.TEXT_PAUSE_LOOSE));
@@ -44,23 +43,23 @@ public class LooseInterface extends Scene {
 
         //etoile 1
         if (PreferenceMemory.getValueRecord(surface.getLevel().reference) < surface.getLevel().oneStar) {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_EMPTY.geBitmap(), 159f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_EMPTY.getBitmap(), 159f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         } else {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_FILL.geBitmap(), 159f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_FILL.getBitmap(), 159f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         }
 
         //etoile 2
         if (PreferenceMemory.getValueRecord(surface.getLevel().reference) < surface.getLevel().twoStar) {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_EMPTY.geBitmap(), 420f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_EMPTY.getBitmap(), 420f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         } else {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_FILL.geBitmap(), 420f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_FILL.getBitmap(), 420f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         }
 
         //etoile 3
         if (PreferenceMemory.getValueRecord(surface.getLevel().reference) < surface.getLevel().threeStar) {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_EMPTY.geBitmap(), 681f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_EMPTY.getBitmap(), 681f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         } else {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_FILL.geBitmap(), 684f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.LOOSE_STAR_FILL.getBitmap(), 684f, 909f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         }
 
     }

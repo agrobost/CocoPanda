@@ -20,7 +20,7 @@ public class Coeur extends GameObject {
 
     public Coeur(Scene scene, float startTime, float vitesseY, float percentageX) {
         super(scene, startTime);
-        super.bitmap = EnumBitmaps.OBJECT_HEART.geBitmap();
+        super.bitmap = EnumBitmaps.OBJECT_HEART.getBitmap();
         super.coord = new float[]{Screen.width*percentageX - bitmap.getWidth()/2+Screen.width/2,-bitmap.getHeight()};
         super.speed[1] = vitesseY;
     }

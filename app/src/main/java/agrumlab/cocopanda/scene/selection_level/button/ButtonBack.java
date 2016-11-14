@@ -24,7 +24,7 @@ public class ButtonBack extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.SELECT_LEVEL_BACK_BUTTON.geBitmap();
+        super.bitmap = EnumBitmaps.SELECT_LEVEL_BACK_BUTTON.getBitmap();
 
     }
 

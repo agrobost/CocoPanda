@@ -3,7 +3,6 @@ package agrumlab.cocopanda.scene.game.game_objects;
 import android.graphics.Canvas;
 
 import java.util.Iterator;
-import java.util.Random;
 
 import agrumlab.cocopanda.R;
 import agrumlab.cocopanda.ressources.CanvasManager;
@@ -22,7 +21,7 @@ public class Coco extends GameObject {
 
     public Coco(Scene scene, float startTime, float vitesseY, float percentageX) {
         super(scene, startTime);
-        super.bitmap = EnumBitmaps.OBJECT_COCO.geBitmap();
+        super.bitmap = EnumBitmaps.OBJECT_COCO.getBitmap();
         super.coord = new float[]{Screen.width*percentageX - bitmap.getWidth()/2+Screen.width/2, -bitmap.getHeight()};
         super.speed[1] = vitesseY;
     }

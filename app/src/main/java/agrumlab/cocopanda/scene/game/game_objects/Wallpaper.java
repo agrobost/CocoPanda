@@ -17,7 +17,7 @@ public class Wallpaper extends GameObject {
 
     public Wallpaper(Scene scene) {
         super(scene, 0f);
-        super.bitmap = EnumBitmaps.GAME_BACKGROUND.geBitmap();
+        super.bitmap = EnumBitmaps.GAME_BACKGROUND.getBitmap();
     }
 
     @Override

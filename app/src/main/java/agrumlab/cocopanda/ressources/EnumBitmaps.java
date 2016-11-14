@@ -36,7 +36,19 @@ public enum EnumBitmaps {
     REPLAY(R.drawable.pause_replay, 243f, 243f),
     PAUSE_MENU(R.drawable.pause_menu, 243f, 243f),
     SELECT_LEVEL_BACKGROUND(R.drawable.select_level_background,1080f,1920f),
-    SELECT_LEVEL_BACK_BUTTON(R.drawable.select_level_back_button,244f,244f);
+    SELECT_LEVEL_BACK_BUTTON(R.drawable.select_level_back_button,244f,244f),
+    SELECT_LEVEL_CADENA(R.drawable.select_level_cadena,258f,260f),
+    SELECT_LEVEL_LEVEL1(R.drawable.select_level_level1,258f,260f),
+    SELECT_LEVEL_LEVEL2(R.drawable.select_level_level2,258f,260f),
+    SELECT_LEVEL_LEVEL3(R.drawable.select_level_level3,258f,260f),
+    SELECT_LEVEL_LEVEL4(R.drawable.select_level_level4,258f,260f),
+    SELECT_LEVEL_LEVEL5(R.drawable.select_level_level5,258f,260f),
+    SELECT_LEVEL_LEVEL6(R.drawable.select_level_level6,258f,260f),
+    SELECT_LEVEL_LEVEL7(R.drawable.select_level_level7,258f,260f),
+    SELECT_LEVEL_LEVEL8(R.drawable.select_level_level8,258f,260f),
+    SELECT_LEVEL_LEVEL9(R.drawable.select_level_level9,258f,260f),
+    SELECT_LEVEL_STAR_EMPTY(R.drawable.select_level_level1,116f,112f),
+    SELECT_LEVEL_STAR_FILLED(R.drawable.select_level_level1,116f,112f);
 
     private float width;
     private float height;
@@ -49,7 +61,7 @@ public enum EnumBitmaps {
         this.height = height;
     }
 
-    public Bitmap geBitmap() {
+    public Bitmap getBitmap() {
         return bitmap;
     }
 

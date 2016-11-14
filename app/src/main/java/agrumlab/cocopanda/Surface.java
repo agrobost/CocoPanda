@@ -127,9 +127,10 @@ public class Surface extends SurfaceView implements Runnable {
                 touchScenes.add(sceneMenu);
                 break;
             case NEW_GAME:
-                level = new Level_1(this);
                 drawnScenes.add(level);
                 touchScenes.add(level);
+                SoundManager.playGameMusic();
+                SoundManager.stopGameMusic();
                 SoundManager.playGameMusic();
                 break;
             case PAUSE_GAME:
@@ -167,4 +168,7 @@ public class Surface extends SurfaceView implements Runnable {
         }
     }
 
+    public void setLevel(Level level) {
+        this.level = level;
+    }
 }

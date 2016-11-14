@@ -71,7 +71,7 @@ public class PauseInterface extends Scene {
     @Override
     public void drawScene(Canvas canvas) {
         //fond noire transparent pour faire stylé
-        CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.PAUSE_BACKGROUND.geBitmap(), 91f, 370f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+        CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.PAUSE_BACKGROUND.getBitmap(), 91f, 370f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         buttonMusic.draw(canvas);
         buttonResume.draw(canvas);
         pauseSensitivity.draw(canvas);
@@ -80,11 +80,11 @@ public class PauseInterface extends Scene {
         buttonMenu.draw(canvas);
 
         if (PreferenceMemory.gameMusicIsEnable()) {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.PAUSE_CHECKED.geBitmap(), 788f, 1077f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.PAUSE_CHECKED.getBitmap(), 788f, 1077f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         }
 
         if (PreferenceMemory.soundEffectsIsEnable()) {
-            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.PAUSE_CHECKED.geBitmap(), 371f, 1077f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+            CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.PAUSE_CHECKED.getBitmap(), 371f, 1077f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         }
 
         CanvasManager.drawTextAdjust(canvas, surface.getLevel().getScore().toString() + " s", 545f, 640f, CanvasManager.getPaint(CanvasManager.TEXT_PAUSE_LOOSE));

@@ -25,7 +25,7 @@ public class ButtonReplay extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.REPLAY.geBitmap();
+        super.bitmap = EnumBitmaps.REPLAY.getBitmap();
     }
 
     @Override

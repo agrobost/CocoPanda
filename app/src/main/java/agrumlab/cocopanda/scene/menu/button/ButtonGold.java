@@ -1,8 +1,5 @@
 package agrumlab.cocopanda.scene.menu.button;
 
-import android.graphics.Bitmap;
-import android.util.Log;
-
 import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Scene;
@@ -26,7 +23,7 @@ public class ButtonGold extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.MENU_COIN.geBitmap();
+        super.bitmap = EnumBitmaps.MENU_COIN.getBitmap();
     }
 
     @Override

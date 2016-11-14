@@ -30,7 +30,7 @@ public class ButtonMusic extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.PAUSE_MUSIC.geBitmap();
+        super.bitmap = EnumBitmaps.PAUSE_MUSIC.getBitmap();
     }
 
     @Override

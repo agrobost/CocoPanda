@@ -28,7 +28,7 @@ public class Sensitivity {
         pointRepere = new float[]{160f * Screen.adjustWidth, 968f * Screen.adjustHeight};
         width_max = 760 * Screen.adjustWidth;
         height_max = 65 * Screen.adjustHeight;
-        this.icon = EnumBitmaps.PAUSE_SENSITIVITY.geBitmap();
+        this.icon = EnumBitmaps.PAUSE_SENSITIVITY.getBitmap();
         this.coord = new float[]{width_max * (PreferenceMemory.getSensitivity() - 1) + pointRepere[0], pointRepere[1]};
     }
 

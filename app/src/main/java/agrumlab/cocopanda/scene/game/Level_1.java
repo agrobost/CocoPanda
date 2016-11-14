@@ -28,36 +28,25 @@ public class Level_1 extends Level {
         super.twoStar = 65; //80s
         super.threeStar = 80; //100s
         super.reference = "level_one";
+        float difficult = 500f;
+        for(int i = 0; i<15; i++){
+            gameObjects.add(new Coco(this,difficult*2*i,600f,0f));
+            gameObjects.add(new Coco(this,difficult*2*i,600f,0.25f));
+            gameObjects.add(new Coco(this,difficult*2*i,600f,0.5f));
+            gameObjects.add(new Coco(this,difficult*2*i,600f,0.75f));
+            gameObjects.add(new Coco(this,difficult*2*i,600f,1f));
 
-        gameObjects.add(new Bee(this,0f,500f,320f,0.5f));
+            gameObjects.add(new Coco(this,difficult+difficult*2*i,600f,0.125f));
+            gameObjects.add(new Coco(this,difficult+difficult*2*i,600f,0.375f));
+            gameObjects.add(new Coco(this,difficult+difficult*2*i,600f,0.625f));
+            gameObjects.add(new Coco(this,difficult+difficult*2*i,600f,0.875f));
+        }
 
-        gameObjects.add(new Bee(this,250f,500f,320f,33.33f/100f));
-        gameObjects.add(new Bee(this,250f,500f,320f,33.33f*2f/100f));
 
-        gameObjects.add(new Bee(this,500f,500f,320f,100f/4*1f/100f));
-        gameObjects.add(new Bee(this,500f,500f,320f,100f/4*2f/100f));
-        gameObjects.add(new Bee(this,500f,500f,320f,100f/4*3f/100f));
 
-        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*1f/100f));
-        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*2f/100f));
-        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*3f/100f));
-        gameObjects.add(new Bee(this,750f,500f,320f,100f/5*4f/100f));
 
-        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*1f/100f));
-        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*2f/100f));
-        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*3f/100f));
-        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*4f/100f));
-        gameObjects.add(new Bee(this,1000f,500f,320f,100f/5*-1f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*5f/100f));
 
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*1f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*2f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*3f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*4f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*-1f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*5f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*-2f/100f));
-        gameObjects.add(new Bee(this,1250f,500f,320f,100f/5*6f/100f));
+
 
     }
 

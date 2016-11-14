@@ -22,7 +22,7 @@ public class ButtonPlay extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.MENU_PLAY.geBitmap();
+        super.bitmap = EnumBitmaps.MENU_PLAY.getBitmap();
     }
 
     @Override

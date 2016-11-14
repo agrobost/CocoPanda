@@ -26,7 +26,7 @@ public class SlowingDown extends GameObject {
 
     public SlowingDown(Scene scene, int vitesseY_min, int vitesseY_max) {
         super(scene);
-        super.bitmap = EnumBitmaps.OBJECT_TIMER.geBitmap();
+        super.bitmap = EnumBitmaps.OBJECT_TIMER.getBitmap();
 
         float x, y;
         y = -bitmap.getHeight();
