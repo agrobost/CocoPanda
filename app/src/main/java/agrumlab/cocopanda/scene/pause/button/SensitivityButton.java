@@ -4,16 +4,16 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
-import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.scene.Scene;
 
 /**
  * Created by Alexandre on 08/02/2015.
  */
-public class Sensitivity {
+public class SensitivityButton {
     private Bitmap icon = null;
     private float[] coord = {0f, 0f};
 
@@ -23,12 +23,12 @@ public class Sensitivity {
     private boolean autorisation = false;
     private Scene scene;
 
-    public Sensitivity(Scene scene) {
+    public SensitivityButton(Scene scene) {
         this.scene = scene;
-        pointRepere = new float[]{160f * Screen.adjustWidth, 968f * Screen.adjustHeight};
-        width_max = 760 * Screen.adjustWidth;
-        height_max = 65 * Screen.adjustHeight;
-        this.icon = EnumBitmaps.PAUSE_SENSITIVITY.getBitmap();
+        pointRepere = new float[]{160f * ScreenManager.adjustWidth, 968f * ScreenManager.adjustHeight};
+        width_max = 760 * ScreenManager.adjustWidth;
+        height_max = 65 * ScreenManager.adjustHeight;
+        this.icon = BitmapsManager.PAUSE_SENSITIVITY_BUTTON.getBitmap();
         this.coord = new float[]{width_max * (PreferenceMemory.getSensitivity() - 1) + pointRepere[0], pointRepere[1]};
     }
 
@@ -49,7 +49,7 @@ public class Sensitivity {
         autorisation = false;
         float nvSensitivity = 1 + (this.coord[0] - pointRepere[0]) / width_max;
         PreferenceMemory.putSensitivity(nvSensitivity);
-        this.scene.getSurface().getLevel().getPanda().setSensitivity(nvSensitivity);
+        this.scene.getSurface().getGameScene().getPanda().setSensitivity(nvSensitivity);
     }
 
     public void draw(Canvas canvas) {

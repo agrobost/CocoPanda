@@ -6,9 +6,9 @@ import java.util.Iterator;
 import java.util.Random;
 
 import agrumlab.cocopanda.R;
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
-import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
@@ -19,8 +19,8 @@ public class Coin extends GameObject {
 
     public Coin(Scene scene, float startTime, float vitesseY, float percentageX)  {
         super(scene, startTime);
-        super.bitmap = EnumBitmaps.OBJECT_COIN.getBitmap();
-        super.coord = new float[]{Screen.width*percentageX - bitmap.getWidth()/2+Screen.width/2,-bitmap.getHeight()};
+        super.bitmap = BitmapsManager.GAME_COIN_GAMEOBJECT.getBitmap();
+        super.coord = new float[]{ScreenManager.width*percentageX - bitmap.getWidth()/2+ ScreenManager.width/2,-bitmap.getHeight()};
 
         super.speed[1] = vitesseY;
     }
@@ -32,7 +32,7 @@ public class Coin extends GameObject {
 
     @Override
     public void animation(Iterator<GameObject> iterator, float time) {
-        if(super.coord[1]> Screen.height){
+        if(super.coord[1]> ScreenManager.height){
             iterator.remove();
         }else {
             super.coord[1] = super.coord[1] + super.speed[1] * time / 1000f;
@@ -44,7 +44,7 @@ public class Coin extends GameObject {
     protected void inCollision(GameObject panda, Iterator iterator) {
         iterator.remove();
         SoundManager.playSoundEffect(R.raw.coins);
-        scene.getSurface().getLevel().getScore().setGold(scene.getSurface().getLevel().getScore().getGold()+1);
+        scene.getSurface().getGameScene().getScore().setGold(scene.getSurface().getGameScene().getScore().getGold()+1);
     }
 
 }

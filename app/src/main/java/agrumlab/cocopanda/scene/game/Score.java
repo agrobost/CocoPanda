@@ -4,8 +4,8 @@ import android.graphics.Canvas;
 
 import java.text.DecimalFormat;
 
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
 import agrumlab.cocopanda.scene.Scene;
 
@@ -24,9 +24,9 @@ public class Score {
 
     public void drawScene(Canvas canvas, boolean running, float time) {
 
-        CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.GAME_SCORE.getBitmap(), 11f, 8f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
-        CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.GAME_LIFE.getBitmap(), 11f, 260f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
-        CanvasManager.drawBitmapAdjust(canvas, EnumBitmaps.GAME_COIN.getBitmap(), 11f, 134f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+        CanvasManager.drawBitmapAdjust(canvas, BitmapsManager.GAME_BANNER_TIME.getBitmap(), 11f, 8f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+        CanvasManager.drawBitmapAdjust(canvas, BitmapsManager.GAME_BANNER_NUMBER_OF_HEART.getBitmap(), 11f, 260f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
+        CanvasManager.drawBitmapAdjust(canvas, BitmapsManager.GAME_BANNER_COIN.getBitmap(), 11f, 134f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
 
         CanvasManager.drawTextAdjust(canvas, df.format(time/1000f) + "s", 145f, 86f, CanvasManager.getPaint(CanvasManager.TEXT_SCORE));
         CanvasManager.drawTextAdjust(canvas, "" + gold, 145f, 214f, CanvasManager.getPaint(CanvasManager.TEXT_SCORE));
@@ -42,7 +42,7 @@ public class Score {
         if (numberLife >= 0) {
             this.numberLife = numberLife;
         } else {
-            scene.getSurface().getLevel().lose();
+            scene.getSurface().getGameScene().lose();
         }
     }
 

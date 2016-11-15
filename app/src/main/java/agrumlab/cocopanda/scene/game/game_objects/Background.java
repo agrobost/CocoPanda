@@ -4,8 +4,8 @@ import android.graphics.Canvas;
 
 import java.util.Iterator;
 
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
 
@@ -13,11 +13,11 @@ import agrumlab.cocopanda.scene.Scene;
  * Created by Alexandre on 30/01/2015.
  */
 
-public class Wallpaper extends GameObject {
+public class Background extends GameObject {
 
-    public Wallpaper(Scene scene) {
+    public Background(Scene scene) {
         super(scene, 0f);
-        super.bitmap = EnumBitmaps.GAME_BACKGROUND.getBitmap();
+        super.bitmap = BitmapsManager.GAME_BACKGROUND_GAMEOBJECT.getBitmap();
     }
 
     @Override

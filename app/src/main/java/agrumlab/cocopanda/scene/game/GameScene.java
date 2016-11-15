@@ -3,41 +3,40 @@ package agrumlab.cocopanda.scene.game;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
-import agrumlab.cocopanda.scene.game.button.PauseIcon;
-import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.ressources.ScreenManager;
+import agrumlab.cocopanda.scene.game.button.PauseButton;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.game.game_objects.Panda;
-import agrumlab.cocopanda.scene.game.game_objects.Wallpaper;
+import agrumlab.cocopanda.scene.game.game_objects.Background;
 import agrumlab.cocopanda.scene.Camera;
 import agrumlab.cocopanda.scene.Scene;
 
 /**
  * Created by Alexandre on 30/01/2015.
  */
-public abstract class Level extends Scene {
+public abstract class GameScene extends Scene {
 
 
     public String reference;
     public float oneStar, twoStar, threeStar;
     protected Boolean running = true;
     protected Panda panda = new Panda(this);
-    protected Wallpaper wallpaper = new Wallpaper(this);
+    protected Background background = new Background(this);
     protected ArrayList<GameObject> gameObjects = new ArrayList<>();
     protected Score score = new Score(this);
-    protected PauseIcon pauseIcon = new PauseIcon(this);
+    protected PauseButton pauseButton = new PauseButton(this);
 
-    protected Level(Surface surface) {
+    protected GameScene(Surface surface) {
         super(surface);
-        this.addButton(pauseIcon);
+        this.addButton(pauseButton);
     }
 
     @Override
     public void initializeScene() {
-        this.camera = new Camera(new float[]{Screen.width / 2, 0f}, new float[]{Screen.width, Screen.height});
+        this.camera = new Camera(new float[]{ScreenManager.width / 2, 0f}, new float[]{ScreenManager.width, ScreenManager.height});
     }
 
     @Override

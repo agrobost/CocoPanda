@@ -1,20 +1,17 @@
 package agrumlab.cocopanda.ressources;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
-import android.view.WindowManager;
 
 import java.lang.reflect.Method;
 
 /**
  * Created by Alexandre on 03/02/2015.
  */
-public class Screen {
+public class ScreenManager {
     public static float width, height, adjustWidth, adjustHeight;
 
     public static void initialize(Activity activity) {
@@ -46,8 +43,8 @@ public class Screen {
             width = display.getWidth();
             height = display.getHeight();
         }
-        Screen.adjustWidth = width / 1080f;
-        Screen.adjustHeight = height / 1920f;
+        ScreenManager.adjustWidth = width / 1080f;
+        ScreenManager.adjustHeight = height / 1920f;
 
     }
 

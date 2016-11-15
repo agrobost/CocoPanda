@@ -1,7 +1,7 @@
 package agrumlab.cocopanda.scene.pause.button;
 
 import agrumlab.cocopanda.Surface;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
@@ -9,9 +9,9 @@ import agrumlab.cocopanda.util.ButtonListener;
 /**
  * Created by Alexandre on 08/02/2015.
  */
-public class ButtonMenu extends Button {
+public class MenuButton extends Button {
 
-    public ButtonMenu(Scene scene) {
+    public MenuButton(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
@@ -24,7 +24,7 @@ public class ButtonMenu extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.PAUSE_MENU.getBitmap();
+        super.bitmap = BitmapsManager.BUTTON_MENU.getBitmap();
     }
 
     @Override

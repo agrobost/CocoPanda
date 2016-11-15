@@ -11,8 +11,8 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
-import agrumlab.cocopanda.ressources.EnumBitmaps;
-import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.ressources.BitmapsManager;
+import agrumlab.cocopanda.ressources.ScreenManager;
 
 /**
  * Created by Alexandre on 10/12/2014.
@@ -30,8 +30,8 @@ public class ActivityMain extends Activity {
         hideSystemUI();
         mInterstitialAd = newInterstitialAd();
         loadInterstitial();
-        Screen.initialize(this);
-        EnumBitmaps.loadBitmaps(this);
+        ScreenManager.initialize(this);
+        BitmapsManager.loadBitmaps(this);
         surface = new Surface(this);
         this.setContentView(surface);
     }

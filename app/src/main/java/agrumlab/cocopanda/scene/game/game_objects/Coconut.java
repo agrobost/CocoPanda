@@ -5,24 +5,24 @@ import android.graphics.Canvas;
 import java.util.Iterator;
 
 import agrumlab.cocopanda.R;
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
-import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.game.Level;
+import agrumlab.cocopanda.scene.game.GameScene;
 
 /**
  * Created by Alexandre on 30/01/2015.
  */
-public class Coco extends GameObject {
+public class Coconut extends GameObject {
 
 
-    public Coco(Scene scene, float startTime, float vitesseY, float percentageX) {
+    public Coconut(Scene scene, float startTime, float vitesseY, float percentageX) {
         super(scene, startTime);
-        super.bitmap = EnumBitmaps.OBJECT_COCO.getBitmap();
-        super.coord = new float[]{Screen.width*percentageX - bitmap.getWidth()/2+Screen.width/2, -bitmap.getHeight()};
+        super.bitmap = BitmapsManager.GAME_COCO_GAMEOBJECT.getBitmap();
+        super.coord = new float[]{ScreenManager.width*percentageX - bitmap.getWidth()/2+ ScreenManager.width/2, -bitmap.getHeight()};
         super.speed[1] = vitesseY;
     }
 
@@ -34,7 +34,7 @@ public class Coco extends GameObject {
 
     @Override
     public void animation(Iterator<GameObject> iterator, float time) {
-        if (super.coord[1] > Screen.height) {
+        if (super.coord[1] > ScreenManager.height) {
             iterator.remove();
         } else {
             super.coord[1] = super.coord[1] + super.speed[1] * time / 1000f;
@@ -44,8 +44,8 @@ public class Coco extends GameObject {
     @Override
     protected void inCollision(GameObject panda, Iterator iterator) {
         SoundManager.playSoundEffect(R.raw.collision_panda);
-        Level level = scene.getSurface().getLevel();
-        level.getScore().setNumberLife(level.getScore().getNumberLife() - 1);
+        GameScene gameScene = scene.getSurface().getGameScene();
+        gameScene.getScore().setNumberLife(gameScene.getScore().getNumberLife() - 1);
         iterator.remove();
     }
 

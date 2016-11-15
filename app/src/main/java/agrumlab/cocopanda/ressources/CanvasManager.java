@@ -52,11 +52,11 @@ public class CanvasManager {
     }
 
     public static void drawBitmapAdjust(Canvas canvas, Bitmap bitmap, float x, float y, Paint paint1) {
-        canvas.drawBitmap(bitmap, x * Screen.adjustWidth, y * Screen.adjustHeight, paint1);
+        canvas.drawBitmap(bitmap, x * ScreenManager.adjustWidth, y * ScreenManager.adjustHeight, paint1);
     }
 
     public static void drawTextAdjust(Canvas canvas, String text, float x, float y, Paint paint1) {
-        canvas.drawText(text, x * Screen.adjustWidth, y * Screen.adjustHeight, paint1);
+        canvas.drawText(text, x * ScreenManager.adjustWidth, y * ScreenManager.adjustHeight, paint1);
     }
 
 }

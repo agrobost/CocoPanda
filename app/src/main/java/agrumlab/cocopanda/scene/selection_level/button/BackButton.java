@@ -1,32 +1,35 @@
-package agrumlab.cocopanda.scene.menu.button;
+package agrumlab.cocopanda.scene.selection_level.button;
 
 import agrumlab.cocopanda.Surface;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
 
 /**
- * Created by Alexandre on 06/02/2015.
+ * Created by Alexandre on 14/11/2016.
  */
-public class ButtonPlay extends Button {
-    public ButtonPlay(Scene scene) {
+
+public class BackButton extends Button {
+
+    public BackButton(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
             public void buttonClicked(Button button) {
-                button.getScene().getSurface().changeLayout(Surface.Layout.SELECT_LEVEL);
+                button.getScene().getSurface().changeLayout(Surface.Layout.MENU);
             }
         });
     }
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.MENU_PLAY.getBitmap();
+        super.bitmap = BitmapsManager.SELECT_LEVEL_BACK_BUTTON.getBitmap();
+
     }
 
     @Override
     protected void initializePosition() {
-        setPosition(Mark.TOP, 0.5f,0.416f);
+        setPosition(Mark.TOP_LEFT,0.0222f,0.8604f);
     }
 }

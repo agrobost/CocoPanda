@@ -1,6 +1,7 @@
-package agrumlab.cocopanda.scene.menu.button;
+package agrumlab.cocopanda.scene.pause.button;
 
-import agrumlab.cocopanda.ressources.EnumBitmaps;
+import agrumlab.cocopanda.Surface;
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
@@ -8,25 +9,26 @@ import agrumlab.cocopanda.util.ButtonListener;
 /**
  * Created by Alexandre on 06/02/2015.
  */
-public class ButtonRank extends Button {
+public class ResumeButton extends Button {
 
-    public ButtonRank(Scene scene) {
+    public ResumeButton(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
             public void buttonClicked(Button button) {
-
+                button.getScene().getSurface().changeLayout(Surface.Layout.RESUME_GAME);
             }
         });
     }
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.MENU_RANK.getBitmap();
+        super.bitmap = BitmapsManager.PAUSE_RESUME_BUTTON.getBitmap();
     }
 
     @Override
     protected void initializePosition() {
-        setPosition(Mark.TOP_LEFT,0.03f,0.873f);
+        setPosition(Mark.TOP_LEFT,0.3879f,0.6213f);
     }
+
 }

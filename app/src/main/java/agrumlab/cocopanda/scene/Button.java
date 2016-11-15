@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import java.util.ArrayList;
 
 import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.util.ButtonListener;
 import agrumlab.cocopanda.util.ButtonObservable;
 import agrumlab.cocopanda.util.Position;
@@ -136,8 +136,8 @@ public abstract class Button implements ButtonObservable {
         }
         adjustX_withMark = adjustX_withMark * widthBitmap;
         adjustY_withMark = adjustY_withMark * heightBitmap;
-        realX = Screen.width * percentageX + adjustX_withMark;
-        realY = Screen.height * percentageY + adjustY_withMark;
+        realX = ScreenManager.width * percentageX + adjustX_withMark;
+        realY = ScreenManager.height * percentageY + adjustY_withMark;
         this.position = new Position(realX, realY);
     }
 }

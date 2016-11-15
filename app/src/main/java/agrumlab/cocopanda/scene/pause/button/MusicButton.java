@@ -1,6 +1,6 @@
 package agrumlab.cocopanda.scene.pause.button;
 
-import agrumlab.cocopanda.ressources.EnumBitmaps;
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
 import agrumlab.cocopanda.ressources.SoundManager;
@@ -10,9 +10,9 @@ import agrumlab.cocopanda.util.ButtonListener;
 /**
  * Created by Alexandre on 06/02/2015.
  */
-public class ButtonMusic extends Button {
+public class MusicButton extends Button {
 
-    public ButtonMusic(Scene scene) {
+    public MusicButton(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
@@ -30,7 +30,7 @@ public class ButtonMusic extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = EnumBitmaps.PAUSE_MUSIC.getBitmap();
+        super.bitmap = BitmapsManager.PAUSE_MUSIC_BUTTON.getBitmap();
     }
 
     @Override

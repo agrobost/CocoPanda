@@ -6,10 +6,10 @@ import android.view.MotionEvent;
 
 import java.util.Iterator;
 
+import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
-import agrumlab.cocopanda.ressources.Screen;
+import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
 
@@ -23,11 +23,11 @@ public class Panda extends GameObject {
 
     public Panda(Scene scene) {
         super(scene,0f);
-        super.bitmap = EnumBitmaps.OBJECT_PANDA.getBitmap();
+        super.bitmap = BitmapsManager.GAME_PANDA_GAMEOBJECT.getBitmap();
 
         float x, y;
-        x = Screen.width - bitmap.getWidth() / 2;
-        y = Screen.height * 1531 / 1920 - bitmap.getHeight();
+        x = ScreenManager.width - bitmap.getWidth() / 2;
+        y = ScreenManager.height * 1531 / 1920 - bitmap.getHeight();
 
         super.coord = new float[]{x, y};
         this.sensitivity = PreferenceMemory.getSensitivity();
@@ -61,23 +61,23 @@ public class Panda extends GameObject {
     private float sensitivity = (float) 1.7;
 
     public void actionDown(MotionEvent event) {
-        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getLevel().isRunning()) {
+        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getGameScene().isRunning()) {
             xDown = event.getX();
             pandaInitial = getCoord();
         }
     }
 
     public void actionMove(MotionEvent event) {
-        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getLevel().isRunning()) {
+        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getGameScene().isRunning()) {
             xMove = event.getX();
             //pour width screen
             distanceDowntoMove = xMove - xDown;
             //pour les ecran dont la largeur nest pas 1080 => produit en crois pour conversion
             //* ScreenManager.dimScreen[0] / ActivityMain.size.x;
 
-            if (pandaInitial[0] + distanceDowntoMove * sensitivity > Screen.width /2-getBitmap().getWidth()/2 && pandaInitial[0] + distanceDowntoMove * sensitivity < (3* Screen.width /2)-getBitmap().getWidth()/2) {
+            if (pandaInitial[0] + distanceDowntoMove * sensitivity > ScreenManager.width /2-getBitmap().getWidth()/2 && pandaInitial[0] + distanceDowntoMove * sensitivity < (3* ScreenManager.width /2)-getBitmap().getWidth()/2) {
                 setCoord(new float[]{pandaInitial[0] + distanceDowntoMove * sensitivity, pandaInitial[1]});
-                scene.getSurface().getLevel().getCamera().setCoordCamera(new float[]{Screen.width / 2 - Screen.width + getCoord()[0], scene.getSurface().getLevel().getCamera().getCoordCamera()[1]});
+                scene.getSurface().getGameScene().getCamera().setCoordCamera(new float[]{ScreenManager.width / 2 - ScreenManager.width + getCoord()[0], scene.getSurface().getGameScene().getCamera().getCoordCamera()[1]});
             }else{
                 xDown = event.getX();
                 pandaInitial = getCoord();

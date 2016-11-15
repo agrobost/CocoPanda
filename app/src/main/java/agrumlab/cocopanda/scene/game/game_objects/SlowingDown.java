@@ -1,21 +1,5 @@
 package agrumlab.cocopanda.scene.game.game_objects;
 
-import android.graphics.Canvas;
-
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import agrumlab.cocopanda.R;
-import agrumlab.cocopanda.ressources.CanvasManager;
-import agrumlab.cocopanda.ressources.EnumBitmaps;
-import agrumlab.cocopanda.ressources.Screen;
-import agrumlab.cocopanda.ressources.SoundManager;
-import agrumlab.cocopanda.scene.GameObject;
-import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.game.Level;
-
 /**
  * Created by Alexandre on 30/01/2015.
  */
@@ -26,14 +10,14 @@ public class SlowingDown extends GameObject {
 
     public SlowingDown(Scene scene, int vitesseY_min, int vitesseY_max) {
         super(scene);
-        super.bitmap = EnumBitmaps.OBJECT_TIMER.getBitmap();
+        super.bitmap = BitmapsManager.GAME_TIMER_GAMEOBJECT.getBitmap();
 
         float x, y;
         y = -bitmap.getHeight();
-        x = (random.nextInt((int) Screen.width) - (bitmap.getWidth() / 2))+ Screen.width /2;
+        x = (random.nextInt((int) ScreenManager.width) - (bitmap.getWidth() / 2))+ ScreenManager.width /2;
         super.coord = new float[]{x,y};
 
-        super.vitesse[1] = Screen.height *(random.nextInt(vitesseY_max - vitesseY_min + 1) + vitesseY_min)/1920;
+        super.vitesse[1] = ScreenManager.height *(random.nextInt(vitesseY_max - vitesseY_min + 1) + vitesseY_min)/1920;
     }
 
     @Override
@@ -44,7 +28,7 @@ public class SlowingDown extends GameObject {
 
     @Override
     public void animation(Iterator iterator) {
-        if(super.coord[1]> Screen.height){
+        if(super.coord[1]> ScreenManager.height){
             /*
             super.coord[1] = -bitmap.getHeight();
             super.coord[0] = (random.nextInt(1080) - (bitmap.getWidth() / 2))+1080/2;
@@ -59,14 +43,14 @@ public class SlowingDown extends GameObject {
     @Override
     protected void inCollision(GameObject panda, Iterator iterator) {
         SoundManager.playSoundEffect(R.raw.timer);
-        Level level = scene.getSurface().getLevel();
+        GameScene level = scene.getSurface().getGameScene();
         iterator.remove();
-       // scene.getSurface().getLevel().setSpeed(-10f * Screen.adjustHeight);
+       // scene.getSurface().getGameScene().setSpeed(-10f * ScreenManager.adjustHeight);
         Timer timer = new Timer();
        /* timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                scene.getSurface().getLevel().setSpeed(0);
+                scene.getSurface().getGameScene().setSpeed(0);
             }
         },5000);
         //le top serait de créer une fonction destroy dans game_object_coco pour lancer une animation de l'explosion de la game_object_coco et la détruire par la suite
