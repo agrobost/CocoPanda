@@ -44,7 +44,7 @@ public class Coin extends GameObject {
     protected void inCollision(GameObject panda, Iterator iterator) {
         iterator.remove();
         SoundManager.playSoundEffect(R.raw.coins);
-        scene.getSurface().getGameScene().getScore().setGold(scene.getSurface().getGameScene().getScore().getGold()+1);
+        scene.getSurface().getGame().getScore().setGold(scene.getSurface().getGame().getScore().getGold()+1);
     }
 
 }

@@ -13,36 +13,36 @@ import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Camera;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.pause.button.MenuButton;
-import agrumlab.cocopanda.scene.pause.button.MusicButton;
-import agrumlab.cocopanda.scene.pause.button.ResumeButton;
-import agrumlab.cocopanda.scene.pause.button.ReplayButton;
-import agrumlab.cocopanda.scene.pause.button.SensitivityButton;
-import agrumlab.cocopanda.scene.pause.button.SoundEffectsButton;
+import agrumlab.cocopanda.scene.pause.button.Menu;
+import agrumlab.cocopanda.scene.pause.button.Music;
+import agrumlab.cocopanda.scene.pause.button.Resume;
+import agrumlab.cocopanda.scene.pause.button.Replay;
+import agrumlab.cocopanda.scene.pause.button.Sensitivity;
+import agrumlab.cocopanda.scene.pause.button.SoundEffects;
 
 /**
  * Created by Alexandre on 03/02/2015.
  */
-public class PauseScene extends Scene {
+public class Pause extends Scene {
 
     private Button replayButton, resumeButton, musicButton, soundEffectsButton, menuButton;
-    private SensitivityButton pauseSensitivityButton;
+    private Sensitivity pauseSensitivity;
     private DecimalFormat df = new DecimalFormat("#.##");
 
 
-    public PauseScene(Surface surface) {
+    public Pause(Surface surface) {
         super(surface);
-        replayButton = new ReplayButton(this);
-        resumeButton = new ResumeButton(this);
-        menuButton = new MenuButton(this);
-        musicButton = new MusicButton(this);
-        soundEffectsButton = new SoundEffectsButton(this);
+        replayButton = new Replay(this);
+        resumeButton = new Resume(this);
+        menuButton = new Menu(this);
+        musicButton = new Music(this);
+        soundEffectsButton = new SoundEffects(this);
         this.addButton(replayButton);
         this.addButton(resumeButton);
         this.addButton(menuButton);
         this.addButton(musicButton);
         this.addButton(soundEffectsButton);
-        pauseSensitivityButton = new SensitivityButton(this);
+        pauseSensitivity = new Sensitivity(this);
     }
 
 
@@ -56,14 +56,14 @@ public class PauseScene extends Scene {
         super.touch(event);
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
-                pauseSensitivityButton.actionDown(event);
+                pauseSensitivity.actionDown(event);
                 break;
             case MotionEvent.ACTION_MOVE:
-                pauseSensitivityButton.actionMove(event);
+                pauseSensitivity.actionMove(event);
                 break;
 
             case MotionEvent.ACTION_UP:
-                pauseSensitivityButton.actionUp(event);
+                pauseSensitivity.actionUp(event);
                 break;
         }
     }
@@ -74,7 +74,7 @@ public class PauseScene extends Scene {
         CanvasManager.drawBitmapAdjust(canvas, BitmapsManager.PAUSE_BACKGROUND.getBitmap(), 91f, 370f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         musicButton.draw(canvas);
         resumeButton.draw(canvas);
-        pauseSensitivityButton.draw(canvas);
+        pauseSensitivity.draw(canvas);
         replayButton.draw(canvas);
         soundEffectsButton.draw(canvas);
         menuButton.draw(canvas);
@@ -87,8 +87,8 @@ public class PauseScene extends Scene {
             CanvasManager.drawBitmapAdjust(canvas, BitmapsManager.PAUSE_CHECKED.getBitmap(), 371f, 1077f, CanvasManager.getPaint(CanvasManager.IMAGE_HD));
         }
 
-        CanvasManager.drawTextAdjust(canvas, surface.getGameScene().getScore().toString() + " s", 545f, 640f, CanvasManager.getPaint(CanvasManager.TEXT_PAUSE_LOOSE));
-        CanvasManager.drawTextAdjust(canvas, df.format(PreferenceMemory.getValueRecord(surface.getGameScene().reference)) + " s", 545f, 767f, CanvasManager.getPaint(CanvasManager.TEXT_PAUSE_LOOSE));
+        CanvasManager.drawTextAdjust(canvas, surface.getGame().getScore().toString() + " s", 545f, 640f, CanvasManager.getPaint(CanvasManager.TEXT_PAUSE_LOOSE));
+        CanvasManager.drawTextAdjust(canvas, df.format(PreferenceMemory.getValueRecord(surface.getGame().reference)) + " s", 545f, 767f, CanvasManager.getPaint(CanvasManager.TEXT_PAUSE_LOOSE));
 
 
     }

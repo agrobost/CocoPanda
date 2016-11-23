@@ -1,29 +1,30 @@
 package agrumlab.cocopanda;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.game.GameScene;
-import agrumlab.cocopanda.scene.game.Level1Scene;
-import agrumlab.cocopanda.scene.loose.LooseScene;
-import agrumlab.cocopanda.scene.menu.MenuScene;
-import agrumlab.cocopanda.scene.pause.PauseScene;
-import agrumlab.cocopanda.scene.selection_level.ChooseLevelScene;
+import agrumlab.cocopanda.scene.game.Game;
+import agrumlab.cocopanda.scene.game.Level1;
+import agrumlab.cocopanda.scene.loose.Loose;
+import agrumlab.cocopanda.scene.menu.Menu;
+import agrumlab.cocopanda.scene.pause.Pause;
+import agrumlab.cocopanda.scene.selection_level.ChooseLevel;
 
 /**
  * Created by Alexandre on 28/01/2015.
  */
-public class Surface extends SurfaceView implements Runnable {
+public class Surface extends SurfaceView {
     private ActivityMain activityMain;
     private SurfaceHolder surfaceHolder;
     private Thread thread = null;
@@ -31,44 +32,35 @@ public class Surface extends SurfaceView implements Runnable {
     private ArrayList<Scene> drawnScenes = new ArrayList<>();
     private ArrayList<Scene> touchScenes = new ArrayList<>();
 
-    private GameScene gameScene = null;
-    private PauseScene pauseScene = null;
-    private MenuScene menuScene = null;
-    private LooseScene looseScene = null;
-    private ChooseLevelScene chooseLevelScene = null;
+    private Game game = null;
+    private Pause pause = null;
+    private Menu menu = null;
+    private Loose loose = null;
+    private ChooseLevel chooseLevel = null;
 
-
-    public Surface(ActivityMain activityMain) {
-        super(activityMain);
-        this.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                fetchScenes(motionEvent);
-                return true;
-            }
-        });
-        this.activityMain = activityMain;
-        this.surfaceHolder = getHolder();
-        this.pauseScene = new PauseScene(this);
-        this.menuScene = new MenuScene(this);
-        this.looseScene = new LooseScene(this);
-        this.chooseLevelScene = new ChooseLevelScene(this);
-        changeLayout(Layout.MENU);
-    }
-
-
-    @Override
-    public void run() {
-        while (isRunning) {
-            if (!surfaceHolder.getSurface().isValid()) {
-                continue;
-            }
-            Canvas canvas = surfaceHolder.lockCanvas();
-            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-            fetchScenes(canvas);
-            surfaceHolder.unlockCanvasAndPost(canvas);
+    public Surface(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        if(!isInEditMode()){
+            this.setOnTouchListener(new OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    fetchScenes(motionEvent);
+                    return true;
+                }
+            });
+            this.activityMain = activityMain;
+            this.surfaceHolder = getHolder();
+            this.pause = new Pause(this);
+            this.menu = new Menu(this);
+            this.loose = new Loose(this);
+            this.chooseLevel = new ChooseLevel(this);
+            changeLayout(Layout.MENU);
         }
+
     }
+
+
+
 
     public synchronized void fetchScenes(Object obj) {
         if (obj instanceof Canvas) {
@@ -96,23 +88,31 @@ public class Surface extends SurfaceView implements Runnable {
     }
 
     public void resume() {
-        if (this.gameScene != null) {
-            if (this.gameScene.isRunning()) {
+        if (this.game != null) {
+            if (this.game.isRunning()) {
                 SoundManager.playGameMusic();
             }
         }
         isRunning = true;
-        thread = new Thread(this);
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (isRunning) {
+                    if (!surfaceHolder.getSurface().isValid()) {
+                        continue;
+                    }
+                    Canvas canvas = surfaceHolder.lockCanvas();
+                    canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                    fetchScenes(canvas);
+                    surfaceHolder.unlockCanvasAndPost(canvas);
+                }
+            }
+        });
         thread.start();
     }
 
-    public PauseScene getPauseScene() {
-        return pauseScene;
-    }
-
-
-    public GameScene getGameScene() {
-        return this.gameScene;
+    public Game getGame() {
+        return this.game;
     }
 
     public ActivityMain getActivityMain() {
@@ -128,52 +128,52 @@ public class Surface extends SurfaceView implements Runnable {
         touchScenes.clear();
         switch (layout) {
             case MENU:
-                drawnScenes.add(menuScene);
-                touchScenes.add(menuScene);
+                drawnScenes.add(menu);
+                touchScenes.add(menu);
                 break;
             case NEW_GAME:
-                drawnScenes.add(gameScene);
-                touchScenes.add(gameScene);
+                drawnScenes.add(game);
+                touchScenes.add(game);
                 SoundManager.playGameMusic();
                 SoundManager.stopGameMusic();
                 SoundManager.playGameMusic();
                 break;
             case PAUSE_GAME:
-                gameScene.setRunning(false);
-                drawnScenes.add(gameScene);
-                drawnScenes.add(pauseScene);
-                touchScenes.add(pauseScene);
+                game.setRunning(false);
+                drawnScenes.add(game);
+                drawnScenes.add(pause);
+                touchScenes.add(pause);
                 SoundManager.pauseGameMusic();
                 break;
             case RESUME_GAME:
-                gameScene.setRunning(true);
-                drawnScenes.add(gameScene);
-                touchScenes.add(gameScene);
+                game.setRunning(true);
+                drawnScenes.add(game);
+                touchScenes.add(game);
                 SoundManager.playGameMusic();
                 break;
             case LOOSE_GAME:
-                gameScene.setRunning(false);
-                drawnScenes.add(gameScene);
-                drawnScenes.add(looseScene);
-                touchScenes.add(looseScene);
+                game.setRunning(false);
+                drawnScenes.add(game);
+                drawnScenes.add(loose);
+                touchScenes.add(loose);
                 SoundManager.playSoundEffect(R.raw.lose);
                 SoundManager.stopGameMusic();
                 break;
             case REPLAY:
-                gameScene = new Level1Scene(this);
-                drawnScenes.add(gameScene);
-                touchScenes.add(gameScene);
+                game = new Level1(this);
+                drawnScenes.add(game);
+                touchScenes.add(game);
                 SoundManager.stopGameMusic();
                 SoundManager.playGameMusic();
                 break;
             case SELECT_LEVEL:
-                drawnScenes.add(chooseLevelScene);
-                touchScenes.add(chooseLevelScene);
+                drawnScenes.add(chooseLevel);
+                touchScenes.add(chooseLevel);
                 break;
         }
     }
 
-    public void setGameScene(GameScene gameScene) {
-        this.gameScene = gameScene;
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

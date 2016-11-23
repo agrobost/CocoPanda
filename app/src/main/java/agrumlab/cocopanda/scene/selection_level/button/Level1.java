@@ -1,4 +1,4 @@
-package agrumlab.cocopanda.scene.game.button;
+package agrumlab.cocopanda.scene.selection_level.button;
 
 import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.BitmapsManager;
@@ -7,28 +7,32 @@ import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
 
 /**
- * Created by Alexandre on 06/02/2015.
+ * Created by Alexandre on 13/11/2016.
  */
-public class PauseButton extends Button {
 
-    public PauseButton(Scene scene) {
+public class Level1 extends Button {
+
+
+    public Level1(final Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
             public void buttonClicked(Button button) {
-                button.getScene().getSurface().changeLayout(Surface.Layout.PAUSE_GAME);
+                button.getScene().getSurface().setGame(new agrumlab.cocopanda.scene.game.Level1(button.getScene().getSurface()));
+                button.getScene().getSurface().changeLayout(Surface.Layout.NEW_GAME);
+
             }
         });
     }
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = BitmapsManager.GAME_PAUSE_BUTTON.getBitmap();
+        super.bitmap = BitmapsManager.SELECTLEVEL_LEVEL1_BUTTON.getBitmap();
+
     }
 
     @Override
     protected void initializePosition() {
-        setPosition(Mark.TOP_LEFT, 0.8602f,0.9229f);
+        setPosition(Mark.TOP_LEFT,0.0574f,0.2094f);
     }
-
 }

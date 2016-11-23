@@ -9,9 +9,9 @@ import agrumlab.cocopanda.util.ButtonListener;
 /**
  * Created by Alexandre on 06/02/2015.
  */
-public class ReplayButton extends Button {
+public class Replay extends Button {
 
-    public ReplayButton(Scene scene) {
+    public Replay(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override

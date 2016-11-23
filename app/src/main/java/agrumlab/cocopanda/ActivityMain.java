@@ -1,17 +1,18 @@
 package agrumlab.cocopanda;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
 import agrumlab.cocopanda.ressources.BitmapsManager;
+import agrumlab.cocopanda.ressources.LoadingRessources;
 import agrumlab.cocopanda.ressources.ScreenManager;
 
 /**
@@ -19,33 +20,46 @@ import agrumlab.cocopanda.ressources.ScreenManager;
  */
 public class ActivityMain extends Activity {
 
-    private static Surface surface;
+    public Surface surface = null;
     private InterstitialAd mInterstitialAd;
-    public static Context context;
+    private LoadingRessources loadingRessources;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = this;
+
         hideSystemUI();
+
+
         mInterstitialAd = newInterstitialAd();
         loadInterstitial();
         ScreenManager.initialize(this);
-        BitmapsManager.loadBitmaps(this);
-        surface = new Surface(this);
-        this.setContentView(surface);
+        for(BitmapsManager bitmapsManager : BitmapsManager.values()){
+            BitmapsManager.loadBitmap(bitmapsManager,this);
+        }
+        //setContentView(R.layout.menu);
+        //surface = (Surface)findViewById(R.id.surface);
+        loadingRessources = new LoadingRessources(this, (ProgressBar) findViewById(R.id.progressBar_loading));
+        loadingRessources.execute(this);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        surface.resume();
+        if(surface!=null){
+            surface.resume();
+        }
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        surface.pause();
+        if(surface!=null){
+            surface.pause();
+        }
+
     }
 
     // This snippet hides the system bars.

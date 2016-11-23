@@ -13,7 +13,7 @@ import agrumlab.cocopanda.scene.Scene;
 /**
  * Created by Alexandre on 08/02/2015.
  */
-public class SensitivityButton {
+public class Sensitivity {
     private Bitmap icon = null;
     private float[] coord = {0f, 0f};
 
@@ -23,7 +23,7 @@ public class SensitivityButton {
     private boolean autorisation = false;
     private Scene scene;
 
-    public SensitivityButton(Scene scene) {
+    public Sensitivity(Scene scene) {
         this.scene = scene;
         pointRepere = new float[]{160f * ScreenManager.adjustWidth, 968f * ScreenManager.adjustHeight};
         width_max = 760 * ScreenManager.adjustWidth;
@@ -49,7 +49,7 @@ public class SensitivityButton {
         autorisation = false;
         float nvSensitivity = 1 + (this.coord[0] - pointRepere[0]) / width_max;
         PreferenceMemory.putSensitivity(nvSensitivity);
-        this.scene.getSurface().getGameScene().getPanda().setSensitivity(nvSensitivity);
+        this.scene.getSurface().getGame().getPanda().setSensitivity(nvSensitivity);
     }
 
     public void draw(Canvas canvas) {

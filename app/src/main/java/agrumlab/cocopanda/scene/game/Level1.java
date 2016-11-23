@@ -2,22 +2,24 @@ package agrumlab.cocopanda.scene.game;
 
 import android.graphics.Canvas;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.game.game_objects.Coconut;
+import agrumlab.cocopanda.scene.game.game_objects.Coin;
 
 /**
  * Created by Alexandre on 28/01/2015.
  */
-public class Level1Scene extends GameScene {
+public class Level1 extends Game {
 
     private double mark = 0;
     private double time = 0;
     private double lapse = 0;
 
-    public Level1Scene(Surface surface) {
+    public Level1(Surface surface) {
         super(surface);
         super.oneStar = 40; //60s
         super.twoStar = 65; //80s
@@ -35,6 +37,11 @@ public class Level1Scene extends GameScene {
             gameObjects.add(new Coconut(this, difficult + difficult * 2 * i, 600f, 0.625f));
             gameObjects.add(new Coconut(this, difficult + difficult * 2 * i, 600f, 0.875f));
         }
+        for(int j = 0;j<=7;j++){
+            gameObjects.add(new Coin(this,difficult*j+difficult/2,600f,0.0625f+0.125f*j));
+        }
+
+        Collections.sort(gameObjects);
     }
 
     @Override

@@ -42,7 +42,7 @@ public class Score {
         if (numberLife >= 0) {
             this.numberLife = numberLife;
         } else {
-            scene.getSurface().getGameScene().lose();
+            scene.getSurface().getGame().lose();
         }
     }
 

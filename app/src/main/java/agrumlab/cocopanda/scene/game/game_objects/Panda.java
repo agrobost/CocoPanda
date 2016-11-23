@@ -61,14 +61,14 @@ public class Panda extends GameObject {
     private float sensitivity = (float) 1.7;
 
     public void actionDown(MotionEvent event) {
-        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getGameScene().isRunning()) {
+        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getGame().isRunning()) {
             xDown = event.getX();
             pandaInitial = getCoord();
         }
     }
 
     public void actionMove(MotionEvent event) {
-        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getGameScene().isRunning()) {
+        if (event.getPointerCount() == 1 && event.getPointerId(0) == 0 && scene.getSurface().getGame().isRunning()) {
             xMove = event.getX();
             //pour width screen
             distanceDowntoMove = xMove - xDown;
@@ -77,7 +77,7 @@ public class Panda extends GameObject {
 
             if (pandaInitial[0] + distanceDowntoMove * sensitivity > ScreenManager.width /2-getBitmap().getWidth()/2 && pandaInitial[0] + distanceDowntoMove * sensitivity < (3* ScreenManager.width /2)-getBitmap().getWidth()/2) {
                 setCoord(new float[]{pandaInitial[0] + distanceDowntoMove * sensitivity, pandaInitial[1]});
-                scene.getSurface().getGameScene().getCamera().setCoordCamera(new float[]{ScreenManager.width / 2 - ScreenManager.width + getCoord()[0], scene.getSurface().getGameScene().getCamera().getCoordCamera()[1]});
+                scene.getSurface().getGame().getCamera().setCoordCamera(new float[]{ScreenManager.width / 2 - ScreenManager.width + getCoord()[0], scene.getSurface().getGame().getCamera().getCoordCamera()[1]});
             }else{
                 xDown = event.getX();
                 pandaInitial = getCoord();

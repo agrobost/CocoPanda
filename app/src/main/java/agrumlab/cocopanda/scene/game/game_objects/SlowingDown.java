@@ -43,14 +43,14 @@ public class SlowingDown extends GameObject {
     @Override
     protected void inCollision(GameObject panda, Iterator iterator) {
         SoundManager.playSoundEffect(R.raw.timer);
-        GameScene level = scene.getSurface().getGameScene();
+        Game level = scene.getSurface().getGame();
         iterator.remove();
-       // scene.getSurface().getGameScene().setSpeed(-10f * ScreenManager.adjustHeight);
+       // scene.getSurface().getGame().setSpeed(-10f * ScreenManager.adjustHeight);
         Timer timer = new Timer();
        /* timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                scene.getSurface().getGameScene().setSpeed(0);
+                scene.getSurface().getGame().setSpeed(0);
             }
         },5000);
         //le top serait de créer une fonction destroy dans game_object_coco pour lancer une animation de l'explosion de la game_object_coco et la détruire par la suite

@@ -74,5 +74,8 @@ public enum BitmapsManager {
             bitmapsManager.load(context);
         }
     }
+    public static void loadBitmap(BitmapsManager bitmapsManager, Context context) {
+            bitmapsManager.load(context);
+    }
 
 }

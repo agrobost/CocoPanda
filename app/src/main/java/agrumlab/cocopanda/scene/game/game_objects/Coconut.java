@@ -11,7 +11,7 @@ import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.game.GameScene;
+import agrumlab.cocopanda.scene.game.Game;
 
 /**
  * Created by Alexandre on 30/01/2015.
@@ -44,8 +44,8 @@ public class Coconut extends GameObject {
     @Override
     protected void inCollision(GameObject panda, Iterator iterator) {
         SoundManager.playSoundEffect(R.raw.collision_panda);
-        GameScene gameScene = scene.getSurface().getGameScene();
-        gameScene.getScore().setNumberLife(gameScene.getScore().getNumberLife() - 1);
+        Game game = scene.getSurface().getGame();
+        game.getScore().setNumberLife(game.getScore().getNumberLife() - 1);
         iterator.remove();
     }
 

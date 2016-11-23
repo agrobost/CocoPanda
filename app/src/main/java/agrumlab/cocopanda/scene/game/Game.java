@@ -3,11 +3,13 @@ package agrumlab.cocopanda.scene.game;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.PreferenceMemory;
 import agrumlab.cocopanda.ressources.ScreenManager;
-import agrumlab.cocopanda.scene.game.button.PauseButton;
+import agrumlab.cocopanda.scene.Button;
+import agrumlab.cocopanda.scene.game.button.Pause;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.game.game_objects.Panda;
 import agrumlab.cocopanda.scene.game.game_objects.Background;
@@ -17,7 +19,7 @@ import agrumlab.cocopanda.scene.Scene;
 /**
  * Created by Alexandre on 30/01/2015.
  */
-public abstract class GameScene extends Scene {
+public abstract class Game extends Scene {
 
 
     public String reference;
@@ -25,11 +27,11 @@ public abstract class GameScene extends Scene {
     protected Boolean running = true;
     protected Panda panda = new Panda(this);
     protected Background background = new Background(this);
-    protected ArrayList<GameObject> gameObjects = new ArrayList<>();
+    protected List<GameObject> gameObjects = new ArrayList<>();
     protected Score score = new Score(this);
-    protected PauseButton pauseButton = new PauseButton(this);
+    protected Button pauseButton = new Pause(this);
 
-    protected GameScene(Surface surface) {
+    protected Game(Surface surface) {
         super(surface);
         this.addButton(pauseButton);
     }
@@ -66,11 +68,6 @@ public abstract class GameScene extends Scene {
         return panda;
     }
 
-
-    public ArrayList<GameObject> getGameObjects() {
-        return gameObjects;
-    }
-
     public Boolean isRunning() {
         return running;
     }
@@ -83,7 +80,7 @@ public abstract class GameScene extends Scene {
 
         PreferenceMemory.putGold(getScore().getGold());
         this.surface.changeLayout(Surface.Layout.LOOSE_GAME);
-        this.surface.getActivityMain().showInterstitial();
+        //this.surface.getActivityMain().showInterstitial();
 
     }
 

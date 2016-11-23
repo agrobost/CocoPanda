@@ -6,12 +6,11 @@ import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
 
 /**
- * Created by Alexandre on 13/11/2016.
+ * Created by Alexandre on 06/02/2015.
  */
+public class Rank extends Button {
 
-public class GoldButton extends Button {
-
-    public GoldButton(Scene scene) {
+    public Rank(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
@@ -23,11 +22,11 @@ public class GoldButton extends Button {
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = BitmapsManager.MENU_BUYCOINS_BUTTON.getBitmap();
+        super.bitmap = BitmapsManager.MENU_RANK_BUTTON.getBitmap();
     }
 
     @Override
     protected void initializePosition() {
-        setPosition(Mark.MIDDLE, 0.33f,0.33f);
+        setPosition(Mark.TOP_LEFT,0.03f,0.873f);
     }
 }

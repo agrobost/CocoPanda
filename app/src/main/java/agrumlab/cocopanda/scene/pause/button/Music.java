@@ -10,9 +10,9 @@ import agrumlab.cocopanda.util.ButtonListener;
 /**
  * Created by Alexandre on 06/02/2015.
  */
-public class MusicButton extends Button {
+public class Music extends Button {
 
-    public MusicButton(Scene scene) {
+    public Music(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override

@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import agrumlab.cocopanda.ressources.ScreenManager;
 
-public abstract class GameObject {
+public abstract class GameObject implements Comparable<GameObject>{
 
     protected float[] coord = {0f, 0f}, speed = {0f, 0f};
     protected Bitmap bitmap = null;
@@ -81,5 +81,16 @@ public abstract class GameObject {
     @Override
     public String toString() {
         return coord[0]+"/"+coord[1];
+    }
+
+    @Override
+    public int compareTo(GameObject gameObject) {
+        if(gameObject.startTime<this.startTime){
+            return 1;
+        }else if(gameObject.startTime==this.startTime){
+            return 0;
+        }else{
+            return -1;
+        }
     }
 }

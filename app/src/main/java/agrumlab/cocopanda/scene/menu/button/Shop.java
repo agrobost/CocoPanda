@@ -7,9 +7,9 @@ package agrumlab.cocopanda.scene.menu.button;
 /**
  * Created by Alexandre on 06/02/2015.
  */
-public class ShopButton extends Button {
+public class Shop extends Button {
 
-    public ShopButton(Scene scene) {
+    public Shop(Scene scene) {
         super(scene);
     }
 

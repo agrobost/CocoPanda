@@ -1,38 +1,34 @@
 package agrumlab.cocopanda.scene.pause.button;
 
+import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.scene.Button;
-import agrumlab.cocopanda.ressources.PreferenceMemory;
 import agrumlab.cocopanda.scene.Scene;
 import agrumlab.cocopanda.util.ButtonListener;
 
 /**
  * Created by Alexandre on 06/02/2015.
  */
-public class SoundEffectsButton extends Button {
+public class Resume extends Button {
 
-    public SoundEffectsButton(Scene scene) {
+    public Resume(Scene scene) {
         super(scene);
         this.addButtonListener(new ButtonListener() {
             @Override
             public void buttonClicked(Button button) {
-                if (PreferenceMemory.soundEffectsIsEnable()) {
-                    PreferenceMemory.muteSoundEffects();
-                } else {
-                    PreferenceMemory.demuteSoundEffects();
-                }
+                button.getScene().getSurface().changeLayout(Surface.Layout.RESUME_GAME);
             }
         });
     }
 
     @Override
     protected void initializeBitmap() {
-        super.bitmap = BitmapsManager.PAUSE_SOUNDEFFECTS_BUTTON.getBitmap();
+        super.bitmap = BitmapsManager.PAUSE_RESUME_BUTTON.getBitmap();
     }
 
     @Override
     protected void initializePosition() {
-        setPosition(Mark.TOP_LEFT,0.1685f,0.5651f);
+        setPosition(Mark.TOP_LEFT,0.3879f,0.6213f);
     }
 
 }

@@ -6,30 +6,28 @@ import agrumlab.cocopanda.Surface;
 import agrumlab.cocopanda.ressources.BitmapsManager;
 import agrumlab.cocopanda.ressources.CanvasManager;
 import agrumlab.cocopanda.ressources.ScreenManager;
+import agrumlab.cocopanda.scene.Button;
 import agrumlab.cocopanda.scene.Camera;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.menu.button.GoldButton;
-import agrumlab.cocopanda.scene.menu.button.PlayButton;
-import agrumlab.cocopanda.scene.menu.button.RankButton;
-import agrumlab.cocopanda.scene.menu.button.ShopButton;
+import agrumlab.cocopanda.scene.menu.button.BuyCoins;
+import agrumlab.cocopanda.scene.menu.button.Play;
+import agrumlab.cocopanda.scene.menu.button.Rank;
+import agrumlab.cocopanda.scene.menu.button.Shop;
 
 /**
  * Created by Alexandre on 06/02/2015.
  */
-public class MenuScene extends Scene {
+public class Menu extends Scene {
 
-    private GoldButton goldButton;
-    private ShopButton shopButton;
-    private PlayButton playButton;
-    private RankButton rankButton;
+    private Button goldButton, shopButton, playButton, rankButton;
 
 
-    public MenuScene(Surface surface) {
+    public Menu(Surface surface) {
         super(surface);
-        rankButton = new RankButton(this);
-        playButton = new PlayButton(this);
-        shopButton = new ShopButton(this);
-        goldButton = new GoldButton(this);
+        rankButton = new Rank(this);
+        playButton = new Play(this);
+        shopButton = new Shop(this);
+        goldButton = new BuyCoins(this);
         this.addButton(goldButton);
         this.addButton(playButton);
         this.addButton(shopButton);

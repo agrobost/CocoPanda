@@ -11,7 +11,7 @@ import agrumlab.cocopanda.ressources.ScreenManager;
 import agrumlab.cocopanda.ressources.SoundManager;
 import agrumlab.cocopanda.scene.GameObject;
 import agrumlab.cocopanda.scene.Scene;
-import agrumlab.cocopanda.scene.game.GameScene;
+import agrumlab.cocopanda.scene.game.Game;
 
 
 public class Bee extends GameObject {
@@ -40,10 +40,10 @@ public class Bee extends GameObject {
             if(super.coord[1]< ScreenManager.height/3){
                 return;
             }
-            if(Math.abs(scene.getSurface().getGameScene().getPanda().getCoord()[0]-this.coord[0])<10d){
+            if(Math.abs(scene.getSurface().getGame().getPanda().getCoord()[0]-this.coord[0])<10d){
 
             }
-            else if(scene.getSurface().getGameScene().getPanda().getCoord()[0]<this.coord[0]){
+            else if(scene.getSurface().getGame().getPanda().getCoord()[0]<this.coord[0]){
                 super.coord[0] = super.coord[0] - super.speed[0] * time / 1000f;
             }else{
                 super.coord[0] = super.coord[0] + super.speed[0] * time / 1000f;
@@ -55,8 +55,8 @@ public class Bee extends GameObject {
     @Override
     protected void inCollision(GameObject panda, Iterator iterator) {
         SoundManager.playSoundEffect(R.raw.collision_panda);
-        GameScene gameScene = scene.getSurface().getGameScene();
-        gameScene.getScore().setNumberLife(gameScene.getScore().getNumberLife() - 1);
+        Game game = scene.getSurface().getGame();
+        game.getScore().setNumberLife(game.getScore().getNumberLife() - 1);
         iterator.remove();
     }
 
